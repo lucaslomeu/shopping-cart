@@ -1,0 +1,117 @@
+@import '../../assets/styles/reset.scss';
+
+.products {
+  @include flexbox($flex-direction: column);
+
+  .product-header {
+    @include flexbox($justify-content: space-evenly);
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .product-type {
+      font-size: 1rem;
+    }
+  }
+
+  .products-list {
+    @include flexbox($flex-direction: row, $justify-content: center);
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 800px;
+
+    .product-item {
+      @include flexbox($flex-direction: column);
+      opacity: 0.8;
+      overflow: hidden;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .section-img {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+
+        .product-img {
+          width: 200px;
+          height: 250px;
+          object-fit: cover;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
+          overflow: hidden;
+          display: block;
+          transform: scale(1);
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.2);
+          }
+        }
+
+        .product-overlay {
+          @include flexbox($flex-direction: row);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(2.5px);
+          color: #ffffff;
+          opacity: 0;
+          transition: opacity 0.25s;
+          gap: 1rem;
+        }
+
+        .product-overlay > * {
+          transform: translateY(20px);
+          transition: transform 0.25s;
+        }
+
+        .product-overlay:hover {
+          opacity: 1;
+        }
+
+        .product-overlay:hover > * {
+          transform: translateY(0);
+        }
+
+        .btn-img {
+          font-size: 2em;
+          font-weight: bold;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+
+      .product-info {
+        @include flexbox($align-items: flex-start, $flex-direction: column);
+        width: 100%;
+        height: 100%;
+        border-width: 0px 1px 1px 1px;
+        border-style: solid;
+        border-color: #e0e0e0;
+        padding: 0rem 0.3px 0.3rem 0.3rem;
+
+        .product-name {
+          font-size: 1rem;
+          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          text-transform: uppercase;
+        }
+
+        .product-price {
+          font-size: 0.9rem;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+        }
+        .product-available {
+          font-size: 0.8rem;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+}
