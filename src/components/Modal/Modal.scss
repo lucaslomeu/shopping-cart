@@ -11,27 +11,75 @@
   backdrop-filter: blur(3px);
   transition: opacity 0.5s;
 
-  &:hover > * {
-    transform: translateY(0);
-  }
-
-  & > * {
-    transform: translateY(150px);
-    transition: transform 0.5s;
-  }
-
   .modal {
     background-color: #fff;
     color: #000;
-    width: 60%;
+    width: 50%;
+    animation: appear ease-in-out 0.25s;
+
+    @keyframes appear {
+      0% {
+        transform: translateY(20px);
+      }
+    }
 
     .modal-content {
-      @include flexbox($flex-direction: column);
-      margin: 20px 20px 20px 20px;
-      height: 100%;
+      @include flexbox($justify-content: center);
+      height: 400px;
+      padding: 2rem;
+      gap: 3rem;
 
-      .modal-img {
-        width: 300px;
+      .modal-left-side {
+        .modal-img {
+          height: 350px;
+          object-fit: cover;
+        }
+      }
+
+      .modal-right-side {
+        @include flexbox(
+          $flex-direction: column,
+          $justify-content: flex-start,
+          $align-items: flex-start
+        );
+        height: 350px;
+        gap: 0.7rem;
+        // border: 1px solid red;
+        padding: 0 1rem;
+
+        .product-name {
+          font-size: 1.5rem;
+          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .product-price {
+          font-size: 1rem;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+        }
+        .product-available {
+          font-size: 0.9rem;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+        }
+
+        .cart-info {
+          @include flexbox;
+          gap: 1rem;
+          width: 100%;
+          // border: 1px solid red;
+
+          .product-quantity {
+            width: 40px;
+            height: 30px;
+            padding-left: 0.4rem;
+          }
+
+          .product-addToCart {
+            @include flexbox;
+            font-size: 1.3rem;
+          }
+        }
       }
     }
   }

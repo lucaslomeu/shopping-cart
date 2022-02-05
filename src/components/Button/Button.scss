@@ -1,0 +1,15 @@
+@import '../../assets/styles/reset.scss';
+
+.btn {
+  height: 30px;
+  width: 80px;
+  background-color: var(--light-color);
+  border: 2px solid #000;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+  }
+}

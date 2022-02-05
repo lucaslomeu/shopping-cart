@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import data from '../../storage';
-import Cart from '../Cart/Cart';
 import Modal from '../Modal/Modal';
+import Button from '../Button/Button';
 import './Products.scss';
 
 import {
@@ -67,12 +67,31 @@ const Products = ({ onClick }) => {
           {isModalVisible && (
             <Modal onClose={() => setIsModalVisible(false)}>
               <div className="modal-content">
-                <img
-                  className="modal-img"
-                  src={item.product.image}
-                  alt={item.product.name}
-                />
-                {item.product.name}
+                <div className="modal-left-side">
+                  <img
+                    className="modal-img"
+                    src={item.product.image}
+                    alt={item.product.name}
+                  />
+                </div>
+                <div className="modal-right-side">
+                  <div className="product-name">{item.product.name}</div>
+                  <div className="product-price">R${item.product.price}</div>
+                  <div className="product-available">
+                    {item.product.availableColors} cores disponíveis
+                  </div>
+                  <div className="cart-info">
+                    <input
+                      className="product-quantity"
+                      type="number"
+                      min="1"
+                      placeholder="0"
+                    />
+                    <div className="product-addToCart">
+                      <Button textBtn="Comprar" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </Modal>
           )}
