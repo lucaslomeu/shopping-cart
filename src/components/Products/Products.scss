@@ -2,14 +2,33 @@
 
 .products {
   @include flexbox($flex-direction: column);
+  width: 850px;
 
   .product-header {
-    @include flexbox($justify-content: space-evenly);
-    width: 100%;
+    @include flexbox($justify-content: space-between);
     margin-bottom: 1rem;
+    width: 100%;
+    padding: 0 1rem;
 
     .product-type {
       font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .header-side {
+      @include flexbox;
+      gap: 1.5rem;
+
+      .product-filter {
+        width: 200px;
+      }
+
+      .product-display {
+        @include flexbox;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
     }
   }
 

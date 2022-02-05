@@ -19,8 +19,15 @@ ul {
   list-style: none;
 }
 
-.container {
-  padding: 1rem 2rem;
+select {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  height: 30px;
+}
+
+option {
+  height: 150px;
 }
 
 @mixin flexbox(
@@ -33,4 +40,9 @@ ul {
   flex-direction: $flex-direction;
   justify-content: $justify-content;
   align-items: $align-items;
+}
+
+.container {
+  @include flexbox;
+  padding: 1rem 2rem;
 }

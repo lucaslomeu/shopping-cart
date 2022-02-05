@@ -3,7 +3,11 @@ import data from '../../storage';
 import Cart from '../Cart/Cart';
 import './Products.scss';
 
-import { AiOutlinePlusCircle, AiOutlineShoppingCart } from 'react-icons/ai';
+import {
+  AiOutlinePlusCircle,
+  AiOutlineShoppingCart,
+  AiOutlineBars,
+} from 'react-icons/ai';
 
 const Products = () => {
   const [cart, setCart] = useState([]);
@@ -20,7 +24,15 @@ const Products = () => {
       <div className="products">
         <div className="product-header">
           <div className="product-type">Camisetas</div>
-          <div className="product-filter">SORT BY</div>
+          <div className="header-side">
+            <div className="product-display">
+              <AiOutlineBars />
+            </div>
+            <select className="product-filter">
+              <option>Menor preço</option>
+              <option>Maior preço</option>
+            </select>
+          </div>
         </div>
         <div className="products-list">
           {products.map((product) => (
