@@ -58,9 +58,6 @@ const Products = ({ onClick }) => {
               <div className="product-info">
                 <div className="product-name">{product.name}</div>
                 <div className="product-price">R${product.price}</div>
-                <div className="product-available">
-                  {product.availableColors} cores disponíveis
-                </div>
               </div>
             </div>
           ))}
@@ -77,9 +74,6 @@ const Products = ({ onClick }) => {
                 <div className="modal-right-side">
                   <div className="product-name">{item.product.name}</div>
                   <div className="product-price">R${item.product.price}</div>
-                  <div className="product-available">
-                    {item.product.availableColors} cores disponíveis
-                  </div>
                   <div className="cart-info">
                     <input
                       className="product-quantity"
@@ -87,9 +81,19 @@ const Products = ({ onClick }) => {
                       min="1"
                       placeholder="0"
                     />
+                    <select className="product-size">
+                      <option value="">P</option>
+                      <option value="">M</option>
+                      <option value="">G</option>
+                      <option value="">GG</option>
+                    </select>
                     <div className="product-addToCart">
                       <Button textBtn="Comprar" />
+                      <Button textBtn="Adicionar ao carrinho" />
                     </div>
+                  </div>
+                  <div className="product-information">
+                    {item.product.description}
                   </div>
                 </div>
               </div>
