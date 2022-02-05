@@ -1,11 +1,14 @@
 import React from 'react';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-const Cart = ({ cartItem }) => {
+const Cart = ({ cartItem = 0 }) => {
+  const attCard = () => {
+    cartItem += 1;
+  };
+
   return (
-    <div>
-      <h2>Cart</h2>
-      <div>{cartItem.length === 0 && <div>Cart is Empty</div>}</div>
-      {cartItem.length}
+    <div className="nav-subitem nav-cart">
+      <AiOutlineShoppingCart />({cartItem})
     </div>
   );
 };

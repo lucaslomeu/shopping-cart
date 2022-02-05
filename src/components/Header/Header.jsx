@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-
 import { FiUser } from 'react-icons/fi';
+import Cart from '../../components/Cart/Cart';
 
 const Header = () => {
+  const [cartItems, setCartItems] = useState(0);
+
   return (
     <header className="navbar">
       <div className="nav-itens">
@@ -22,9 +23,7 @@ const Header = () => {
         <div className="nav-subitem nav-user">
           <FiUser />
         </div>
-        <div className="nav-subitem nav-cart">
-          <AiOutlineShoppingCart /> (0)
-        </div>
+        <Cart />
       </div>
     </header>
   );

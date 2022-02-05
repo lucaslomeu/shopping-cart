@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import data from '../../storage';
 import Cart from '../Cart/Cart';
+import Modal from '../Modal/Modal';
 import './Products.scss';
 
 import {
@@ -9,16 +10,17 @@ import {
   AiOutlineBars,
 } from 'react-icons/ai';
 
-const Products = () => {
+const Products = ({ onClick }) => {
+  const { products } = data;
   const [cart, setCart] = useState([]);
+  const [item, setItem] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const addToCart = (item) => {
     setCart([...cart, item]);
   };
-
   console.log(cart);
 
-  const { products } = data;
   return (
     <div className="container">
       <div className="products">
@@ -39,12 +41,17 @@ const Products = () => {
             <div className="product-item">
               <div className="section-img">
                 <img className="product-img" src={product.image} />
-                <div class="product-overlay">
-                  <div class="btn-img">
-                    <AiOutlinePlusCircle />
+                <div className="product-overlay">
+                  <div className="btn-img">
+                    <AiOutlinePlusCircle
+                      onClick={() => {
+                        setIsModalVisible(true);
+                        setItem({ product });
+                      }}
+                    />
                   </div>
-                  <div class="btn-img">
-                    <AiOutlineShoppingCart />
+                  <div className="btn-img">
+                    <AiOutlineShoppingCart onClick={() => addToCart(product)} />
                   </div>
                 </div>
               </div>
@@ -57,6 +64,18 @@ const Products = () => {
               </div>
             </div>
           ))}
+          {isModalVisible && (
+            <Modal onClose={() => setIsModalVisible(false)}>
+              <div className="modal-content">
+                <img
+                  className="modal-img"
+                  src={item.product.image}
+                  alt={item.product.name}
+                />
+                {item.product.name}
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
     </div>
