@@ -72,27 +72,38 @@ const Products = ({ onClick }) => {
                   />
                 </div>
                 <div className="modal-right-side">
-                  <div className="product-name">{item.product.name}</div>
-                  <div className="product-price">R${item.product.price}</div>
-                  <div className="cart-info">
-                    <input
-                      className="product-quantity"
-                      type="number"
-                      min="1"
-                      placeholder="0"
-                    />
-                    <select className="product-size">
-                      <option value="">P</option>
-                      <option value="">M</option>
-                      <option value="">G</option>
-                      <option value="">GG</option>
-                    </select>
-                    <div className="product-addToCart">
-                      <Button textBtn="Comprar" />
-                      <Button textBtn="Adicionar ao carrinho" />
+                  <div className="general">
+                    <div className="general-information">
+                      <div className="product-name">{item.product.name}</div>
+                      <div className="product-price">
+                        R${item.product.price},00
+                      </div>
+                      <div className="product-portion">
+                        ou até 3x de R$ {item.product.price / 3},00
+                      </div>
+                    </div>
+                    <div className="cart-info">
+                      <input
+                        className="product-quantity"
+                        type="number"
+                        min="1"
+                        placeholder="0"
+                      />
+                      <select className="product-size">
+                        <option value="">P</option>
+                        <option value="">M</option>
+                        <option value="">G</option>
+                        <option value="">GG</option>
+                      </select>
                     </div>
                   </div>
+
+                  <div className="product-addToCart">
+                    <Button textBtn="Comprar" />
+                    <Button textBtn="Adicionar ao carrinho" />
+                  </div>
                   <div className="product-information">
+                    <div className="information-title">Detalhes do produto</div>
                     {item.product.description}
                   </div>
                 </div>

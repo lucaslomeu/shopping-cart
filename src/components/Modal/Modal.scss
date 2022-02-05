@@ -25,7 +25,6 @@
 
     .modal-content {
       @include flexbox($justify-content: center);
-      height: 400px;
       padding: 2rem;
       gap: 3rem;
 
@@ -39,28 +38,42 @@
       .modal-right-side {
         @include flexbox(
           $flex-direction: column,
-          $justify-content: flex-start,
+          $justify-content: center,
           $align-items: flex-start
         );
         height: 350px;
-        gap: 1rem;
+        gap: 2rem;
         padding: 0 1rem;
         width: 100%;
 
-        .product-name {
-          font-size: 1.5rem;
-          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        }
+        .general {
+          @include flexbox($justify-content: space-between);
+          width: 100%;
 
-        .product-price {
-          font-size: 1rem;
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 400;
+          .general-information {
+            @include flexbox($flex-direction: column, $align-items: flex-start);
+            gap: 0.5rem;
+
+            .product-name {
+              font-size: 1.5rem;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+            }
+
+            .product-price {
+              font-size: 1rem;
+              font-weight: 700;
+            }
+
+            .product-portion {
+              font-size: 0.9rem;
+            }
+          }
         }
 
         .cart-info {
-          @include flexbox($justify-content: flex-start);
-          gap: 1.5rem;
+          @include flexbox($flex-direction: column);
+          gap: 0.5rem;
 
           .product-quantity {
             width: 40px;
@@ -71,17 +84,24 @@
           .product-size {
             height: 40px;
           }
+        }
 
-          .product-addToCart {
-            @include flexbox;
-            gap: 0.5rem;
-          }
+        .product-addToCart {
+          @include flexbox;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          width: 100%;
+          margin: 0.3rem 0;
         }
 
         .product-information {
-          margin-top: 1.5rem;
           text-align: justify;
           font-size: 0.9rem;
+
+          .information-title {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+          }
         }
       }
     }
