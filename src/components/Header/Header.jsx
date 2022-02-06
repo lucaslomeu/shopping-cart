@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import './Header.scss';
+import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
-import Cart from '../../components/Cart/Cart';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import './Header.scss';
+import CartList from '../CartList/CartList';
 
 const Header = () => {
   const [cartItems, setCartItems] = useState(0);
@@ -13,7 +15,9 @@ const Header = () => {
         <div className="nav-subitem">Boné</div>
         <div className="nav-subitem">Tênis</div>
       </div>
-      <div className="nav-title">SHOPPING</div>
+      <Link to="/" className="nav-title">
+        SHOPPING
+      </Link>
       <div className="nav-itens">
         <input
           type="search"
@@ -23,7 +27,9 @@ const Header = () => {
         <div className="nav-subitem nav-user">
           <FiUser />
         </div>
-        <Cart />
+        <Link to="/cart">
+          <AiOutlineShoppingCart />
+        </Link>
       </div>
     </header>
   );

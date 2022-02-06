@@ -1,0 +1,10 @@
+@import '../../assets/styles/reset.scss';
+
+.cart-list {
+  @include flexbox;
+  border: 1px solid red;
+
+  .cart-image {
+    width: 50px;
+  }
+}
