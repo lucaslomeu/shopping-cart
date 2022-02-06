@@ -1,0 +1,22 @@
+@import '../../assets/styles/reset.scss';
+
+.cartCount {
+  @include flexbox;
+  position: relative;
+  font-size: 1.3rem;
+
+  .cart-quantity {
+    @include flexbox;
+    position: absolute;
+    background-color: red;
+    width: 9px;
+    height: 9px;
+    color: var(--light-color);
+    right: 0;
+    top: 0;
+    border-radius: 50%;
+    font-size: 0.35rem;
+    text-align: center;
+    font-weight: 700;
+  }
+}

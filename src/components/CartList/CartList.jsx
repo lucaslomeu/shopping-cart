@@ -1,22 +1,44 @@
 import React from 'react';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import './CartList.scss';
+import SelectSize from '../SelectSize/SelectSize';
+import InputQuantity from '../InputQuantity/InputQuantity';
+import { useGetCartItems } from '../../services/cartService';
 
-import { useLocation } from 'react-router-dom';
-
-const CartList = ({ cartItem = 0, onClick }) => {
-  const location = useLocation();
+const CartList = () => {
+  const cartItems = useGetCartItems();
 
   return (
-    <div className="container">
-      <div className="cart-list">
-        <img
-          className="cart-image"
-          src={location.state.image}
-          alt={location.state.name}
-        />
-        <div>{location.state.name}</div>
-        <div>R${location.state.price}</div>
+    <div className="cart-display">
+      {cartItems.map((item, keyId) => (
+        <div key={keyId} className="cart-list">
+          <img className="cart-image" src={item.image} alt={item.name} />
+          <table className="cart-table">
+            <thead>
+              <tr>
+                <th>PRODUTO</th>
+                <th>PREÇO</th>
+                <th>QUANTIDADE</th>
+                <th>SUBTOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{item.name}</td>
+                <td>R${item.price}</td>
+                <td>
+                  <InputQuantity />
+                </td>
+                <td>
+                  <SelectSize />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ))}
+
+      <div className="cart-subtotal">
+        <h1>Total no carrinho</h1>
       </div>
     </div>
   );

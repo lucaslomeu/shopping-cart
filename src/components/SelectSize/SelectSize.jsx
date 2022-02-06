@@ -10,7 +10,7 @@ const SelectSize = ({ size }) => {
       onChange={size}
       defaultValue="P"
     >
-      <option value="" disable>
+      <option value="" disabled>
         TAM
       </option>
       <option value="p">P</option>

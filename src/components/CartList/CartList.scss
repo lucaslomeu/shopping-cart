@@ -1,10 +1,24 @@
 @import '../../assets/styles/reset.scss';
 
-.cart-list {
-  @include flexbox;
-  border: 1px solid red;
+.cart-display {
+  @include flexbox($flex-direction: column);
+  .cart-list {
+    @include flexbox($justify-content: center, $align-items: center);
+    height: 150px;
+    width: 70%;
+    text-align: center;
+    padding: 0 1rem;
 
-  .cart-image {
-    width: 50px;
+    .cart-image {
+      width: 80px;
+    }
+
+    .cart-table {
+      width: 100%;
+
+      th {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }

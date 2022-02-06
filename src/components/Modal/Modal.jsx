@@ -4,6 +4,7 @@ import InputQuantity from '../InputQuantity/InputQuantity';
 import SelectSize from '../SelectSize/SelectSize';
 
 import './Modal.scss';
+import { useAddCartItem } from '../../services/cartService';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ const Modal = ({
   productDatabase,
 }) => {
   let navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  const [_, addCartItem] = useAddCartItem();
   const [size, setSize] = useState('p');
   const [quantity, setQuantity] = useState(0);
 
@@ -22,14 +23,14 @@ const Modal = ({
     if (e.target.id === id) onClose();
   };
 
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-    navigate('/', { state: item });
-    console.log(cart);
+  const AddToCart = () => {
+    addCartItem(productDatabase);
+    navigate('/');
   };
 
-  const buyProduct = (item) => {
-    navigate('/cart', { state: item });
+  const BuyProduct = () => {
+    addCartItem(productDatabase);
+    navigate('/cart');
   };
 
   return (
@@ -60,11 +61,11 @@ const Modal = ({
               </div>
             </div>
 
-            <div className="product-addToCart">
-              <Button textBtn="Comprar" onClick={() => buyProduct()} />
+            <div className="product-AddToCart">
+              <Button textBtn="Comprar" onClick={() => BuyProduct()} />
               <Button
                 textBtn="Adicionar ao carrinho"
-                onClick={() => addToCart()}
+                onClick={() => AddToCart()}
               />
             </div>
             <div className="product-information">

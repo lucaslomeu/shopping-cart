@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import data from '../../storage';
 import Modal from '../Modal/Modal';
-import Header from '../Header/Header';
 import './ProductsList.scss';
 import {
   AiOutlinePlusCircle,
@@ -10,18 +9,17 @@ import {
 } from 'react-icons/ai';
 
 import { useNavigate } from 'react-router-dom';
+import { useAddCartItem } from '../../services/cartService';
 
 const ProductsList = () => {
   let navigate = useNavigate();
-
   const { products } = data;
-  const [cart, setCart] = useState([]);
   const [item, setItem] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const buyProduct = (item) => {
-    setCart([...cart, item]);
-    navigate('/cart', { state: item, cart });
+  const BuyProduct = (item) => {
+    useAddCartItem(item);
+    navigate('/cart');
   };
 
   return (
@@ -55,7 +53,7 @@ const ProductsList = () => {
                   </div>
                   <div className="btn-img">
                     <AiOutlineShoppingCart
-                      onClick={() => buyProduct(product)}
+                      onClick={() => BuyProduct(product)}
                     />
                   </div>
                 </div>

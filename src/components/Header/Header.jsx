@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+
 import './Header.scss';
-import CartList from '../CartList/CartList';
+import CartCount from '../CartCount/CartCount';
+import { useGetCartItems } from '../../services/cartService';
 
 const Header = () => {
-  const [cartItems, setCartItems] = useState(0);
+  const cartItems = useGetCartItems();
 
   return (
     <header className="navbar">
@@ -28,7 +29,7 @@ const Header = () => {
           <FiUser />
         </div>
         <Link to="/cart">
-          <AiOutlineShoppingCart />
+          <CartCount cartCount={cartItems.length} />
         </Link>
       </div>
     </header>
