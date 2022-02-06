@@ -29,7 +29,7 @@ const Header = () => {
           <FiUser />
         </div>
         <Link to="/cart">
-          <CartCount cartCount={cartItems.length} />
+          <CartCount cartCount={cartItems} />
         </Link>
       </div>
     </header>
