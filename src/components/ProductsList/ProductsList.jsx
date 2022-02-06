@@ -18,7 +18,7 @@ const ProductsList = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const BuyProduct = (item) => {
-    useAddCartItem(item);
+    useAddCartItem(item.product);
     navigate('/cart');
   };
 
