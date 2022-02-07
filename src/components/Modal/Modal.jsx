@@ -33,6 +33,13 @@ const Modal = ({
     navigate('/cart');
   };
 
+  const transformCurrency = (currency) => {
+    return currency.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+  };
+
   return (
     <div id={id} className="modal-overlay" onClick={handleOutsideClick}>
       <div className="modal" onClick={onClick}>
@@ -49,10 +56,11 @@ const Modal = ({
               <div className="general-information">
                 <div className="product-name">{productDatabase.name}</div>
                 <div className="product-price">
-                  R${productDatabase.price},00
+                  {transformCurrency(productDatabase.price)}
                 </div>
                 <div className="product-portion">
-                  ou até 3x de R$ {productDatabase.price / 3},00
+                  ou até 3x de
+                  {transformCurrency(productDatabase.price / 3)}
                 </div>
               </div>
               <div className="cart-info">

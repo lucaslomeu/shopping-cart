@@ -12,7 +12,6 @@ const retrieveFromLocalStorage = () => {
 };
 
 const useAddCartItem = () => {
-  debugger;
   const [cartItems, setCartItems] = useState(retrieveFromLocalStorage() || []);
 
   function addCartItem(item) {

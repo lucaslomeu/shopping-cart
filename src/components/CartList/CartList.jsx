@@ -16,6 +16,13 @@ const CartList = () => {
     return price;
   };
 
+  const transformCurrency = (currency) => {
+    return currency.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+  };
+
   return (
     <div className="cart">
       <div className="cart-display">
@@ -52,7 +59,7 @@ const CartList = () => {
                   <td>
                     <SelectSize size={(e) => console.log(e.target.value)} />
                   </td>
-                  <td>R${item.price}</td>
+                  <td>{transformCurrency(item.price)}</td>
                 </tr>
               ))}
             </tbody>
@@ -64,7 +71,9 @@ const CartList = () => {
           <div className="subtotal-title">Total no carrinho</div>
           <div className="subtotal-price">
             <div className="subtotal-price-text">Subtotal:</div>
-            <div className="subtotal-price-total">R$ {cartItemPrice()}</div>
+            <div className="subtotal-price-total">
+              {transformCurrency(cartItemPrice())}
+            </div>
           </div>
         </div>
         <div className="subtotal-adress">
@@ -79,10 +88,10 @@ const CartList = () => {
           <div className="subtotal-final-total">
             <div className="total-text">Total:</div>
             <div className="total-price">
-              <div className="price">R$ {cartItemPrice()}</div>
+              <div className="price">{transformCurrency(cartItemPrice())}</div>
               <div className="price-portion">
-                ou até 3x de R$
-                {cartItemPrice() / 3}
+                ou até 3x de
+                {transformCurrency(cartItemPrice() / 3)}
               </div>
             </div>
           </div>
