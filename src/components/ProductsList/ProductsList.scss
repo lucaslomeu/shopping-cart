@@ -82,6 +82,7 @@
           opacity: 0;
           transition: opacity 0.25s;
           gap: 1rem;
+          cursor: pointer;
         }
 
         .product-overlay > * {
@@ -98,10 +99,9 @@
         }
 
         .btn-img {
-          font-size: 2em;
+          font-size: 3em;
           font-weight: bold;
           color: var(--light-color);
-          cursor: pointer;
         }
       }
 

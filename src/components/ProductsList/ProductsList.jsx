@@ -2,24 +2,26 @@ import React, { useState } from 'react';
 import data from '../../storage';
 import Modal from '../Modal/Modal';
 import './ProductsList.scss';
-import {
-  AiOutlinePlusCircle,
-  AiOutlineShoppingCart,
-  AiOutlineBars,
-} from 'react-icons/ai';
+import { AiOutlinePlusCircle, AiOutlineBars } from 'react-icons/ai';
 
 import { useNavigate } from 'react-router-dom';
-import { useAddCartItem } from '../../services/cartService';
+import { useEffect } from 'react/cjs/react.production.min';
 
 const ProductsList = () => {
   let navigate = useNavigate();
   const { products } = data;
   const [item, setItem] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [sort, setSort] = useState('asc');
 
-  const BuyProduct = (item) => {
-    useAddCartItem(item.product);
-    navigate('/cart');
+  const sortBy = () => {
+    if (sort === 'asc') {
+      products.sort((a, b) => (a.price < b.price ? 1 : -1));
+      setSort('desc');
+    } else {
+      setSort('asc');
+      products.sort((a, b) => (a.price > b.price ? 1 : -1));
+    }
   };
 
   return (
@@ -31,9 +33,9 @@ const ProductsList = () => {
             <div className="product-display">
               <AiOutlineBars />
             </div>
-            <select className="product-filter">
-              <option>Menor preço</option>
-              <option>Maior preço</option>
+            <select className="product-filter" onChange={() => sortBy()}>
+              <option value="asc">Menor preço</option>
+              <option value="desc">Maior preço</option>
             </select>
           </div>
         </div>
@@ -42,19 +44,15 @@ const ProductsList = () => {
             <div key={idKey} className="product-item">
               <div className="section-img">
                 <img className="product-img" src={product.image} />
-                <div className="product-overlay">
+                <div
+                  className="product-overlay"
+                  onClick={() => {
+                    setIsModalVisible(true);
+                    setItem({ product });
+                  }}
+                >
                   <div className="btn-img">
-                    <AiOutlinePlusCircle
-                      onClick={() => {
-                        setIsModalVisible(true);
-                        setItem({ product });
-                      }}
-                    />
-                  </div>
-                  <div className="btn-img">
-                    <AiOutlineShoppingCart
-                      onClick={() => BuyProduct(product)}
-                    />
+                    <AiOutlinePlusCircle />
                   </div>
                 </div>
               </div>
