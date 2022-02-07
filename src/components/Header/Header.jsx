@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
 
 import './Header.scss';
 import CartCount from '../CartCount/CartCount';
-import { useGetCartItems } from '../../services/cartService';
+import { useGetCartItems, useAddCartItem } from '../../services/cartService';
 
 const Header = () => {
   const cartItems = useGetCartItems();
