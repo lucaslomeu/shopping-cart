@@ -1,23 +1,103 @@
 @import '../../assets/styles/reset.scss';
 
-.cart-display {
-  @include flexbox($flex-direction: column);
-  .cart-list {
-    @include flexbox($justify-content: center, $align-items: center);
-    height: 150px;
-    width: 70%;
-    text-align: center;
-    padding: 0 1rem;
+.cart {
+  @include flexbox($align-items: flex-start);
+  padding: 2rem;
 
-    .cart-image {
-      width: 80px;
+  .cart-display {
+    @include flexbox($flex-direction: column);
+    width: 80%;
+
+    .cart-list {
+      @include flexbox($justify-content: center, $flex-direction: column);
+      width: 100%;
+      text-align: center;
+      padding: 0 1rem;
+      margin-bottom: 3rem;
+
+      .cart-table {
+        width: 100%;
+
+        .cart-image {
+          width: 80px;
+        }
+
+        .tr {
+          border: 3px solid red;
+        }
+      }
+    }
+  }
+
+  .cart-subtotal {
+    @include flexbox($flex-direction: column, $align-items: flex-start);
+    width: 40%;
+    height: 100%;
+    border: 2px solid var(--border-color);
+    gap: 2rem;
+    padding: 1rem;
+
+    .subtotal-info {
+      @include flexbox($flex-direction: column, $align-items: flex-start);
+      width: 100%;
+      gap: 0.5rem;
+
+      .subtotal-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      .subtotal-price {
+        @include flexbox($justify-content: space-between);
+        font-size: 1.1rem;
+      }
     }
 
-    .cart-table {
+    .subtotal-adress {
+      @include flexbox;
+      gap: 1rem;
       width: 100%;
 
-      th {
-        margin-bottom: 1rem;
+      .zip-code {
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.2rem;
+        width: 100%;
+        cursor: text;
+
+        &:hover,
+        &:active,
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .subtotal-final {
+      @include flexbox($flex-direction: column);
+      width: 100%;
+      gap: 0.5rem;
+
+      .subtotal-final-total {
+        @include flexbox($justify-content: space-between);
+        width: 100%;
+
+        .total-price {
+          @include flexbox($align-items: flex-end, $flex-direction: column);
+
+          .price {
+            font-size: 1.1rem;
+            font-weight: 700;
+          }
+          .price-portion {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      button {
+        width: 100%;
       }
     }
   }

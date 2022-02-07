@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import data from '../../storage';
 import Modal from '../Modal/Modal';
 import './ProductsList.scss';

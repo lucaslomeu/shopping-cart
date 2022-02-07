@@ -5,9 +5,10 @@ const InputQuantity = ({ quantity, value }) => {
   return (
     <input
       className="product-quantity"
-      value={value}
       type="number"
+      min="0"
       onChange={quantity}
+      defaultValue={value}
     />
   );
 };

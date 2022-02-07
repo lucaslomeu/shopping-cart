@@ -7,10 +7,10 @@ const persistToLocalStorage = (cartItems) => {
 
 const retrieveFromLocalStorage = () => {
   const cartItems = localStorage.getItem('cartItems');
-
   if (cartItems) return JSON.parse(cartItems);
-
   return null;
+
+  console.log(cartItems);
 };
 
 const useAddCartItem = () => {
