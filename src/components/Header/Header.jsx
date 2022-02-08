@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 import './Header.scss';
 import CartCount from '../CartCount/CartCount';
@@ -10,17 +11,12 @@ import ShippingFree from '../../components/ShippingFree/ShippingFree';
 
 const Header = ({ onClick, onChange }) => {
   const cartItems = useGetCartItems();
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-
-  const toggleHamburger = () => {
-    setIsHamburgerOpen(!isHamburgerOpen);
-  };
 
   return (
     <header className="navbar">
       <ShippingFree active={true} />
       <div className="nav">
-        <div className="nav-itens">
+        <div className="nav-items">
           <Link to="/" className="nav-subitem">
             Camiseta
           </Link>
@@ -34,7 +30,7 @@ const Header = ({ onClick, onChange }) => {
         <Link to="/" className="nav-title">
           LomeuShop
         </Link>
-        <div className="nav-itens">
+        <div className="nav-items">
           <InputSearch onClick={onClick} onChange={onChange} />
           <div className="nav-subitem nav-user">
             <FiUser />
@@ -43,11 +39,9 @@ const Header = ({ onClick, onChange }) => {
             <CartCount cartCount={cartItems} />
           </Link>
         </div>
-        {/* <div className="hamburger" onClick={toggleHamburger}>
-        <div className="burger burger1" />
-        <div className="burger burger2" />
-        <div className="burger burger3" />
-      </div> */}
+      </div>
+      <div className="hamburger">
+        <GiHamburgerMenu />
       </div>
     </header>
   );

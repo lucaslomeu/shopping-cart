@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap");
+:root {
+  --text-color: #000000;
+  --hover-color: #8e806a;
+  --border-color: #e0e0e0;
+  --light-color: #ffffff;
+  --warning-color: #b33030;
+  --header-height: 90px;
+  --header-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a:active,
+a:visited {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+select,
+input[type=number] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+option {
+  height: 150px;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: var(--header-width);
+  height: var(--header-height);
+  top: 0;
+  z-index: 10;
+  position: sticky;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+  background-color: var(--light-color);
+  font-size: 1rem;
+}
+.navbar .nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 3rem;
+}
+.navbar .nav .nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+.navbar .nav .nav-items .nav-subitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.navbar .nav .nav-items .nav-subitem:hover {
+  color: var(--hover-color);
+}
+.navbar .nav .nav-items .nav-user,
+.navbar .nav .nav-items .nav-cart {
+  font-size: 1.2rem;
+}
+.navbar .nav .nav-title {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+}
+.navbar .hamburger {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  width: 100px;
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    top: 0;
+    z-index: 10;
+    position: relative;
+  }
+  .navbar .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+  .navbar .nav .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+}

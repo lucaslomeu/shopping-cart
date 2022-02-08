@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
-import InputQuantity from '../InputQuantity/InputQuantity';
 import SelectSize from '../SelectSize/SelectSize';
 
 import './Modal.scss';
@@ -16,8 +15,6 @@ const Modal = ({
 }) => {
   let navigate = useNavigate();
   const [_, addCartItem] = useAddCartItem();
-  const [size, setSize] = useState(productDatabase.size);
-  const [quantity, setQuantity] = useState(productDatabase.quantity);
 
   const handleOutsideClick = (e) => {
     if (e.target.id === id) onClose();
@@ -43,7 +40,7 @@ const Modal = ({
   };
 
   return (
-    <div id={id} className="modal-overlay" onClick={handleOutsideClick}>
+    <div className="modal-overlay" onClick={handleOutsideClick}>
       <div className="modal" onClick={onClick}>
         <div className="modal-content">
           <div className="modal-left-side">
@@ -66,7 +63,6 @@ const Modal = ({
                 </div>
               </div>
               <div className="cart-info">
-                <InputQuantity quantity={quantity} />
                 <SelectSize />
               </div>
             </div>

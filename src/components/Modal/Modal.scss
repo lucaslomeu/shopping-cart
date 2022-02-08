@@ -27,10 +27,12 @@
       @include flexbox($justify-content: center);
       padding: 2rem;
       gap: 3rem;
+      height: 100%;
 
       .modal-left-side {
         .modal-img {
           height: 350px;
+          max-width: 100%;
           object-fit: cover;
         }
       }
@@ -41,14 +43,18 @@
           $justify-content: center,
           $align-items: flex-start
         );
-        height: 350px;
         gap: 2rem;
         padding: 0 1rem;
         width: 100%;
 
         .general {
-          @include flexbox($justify-content: space-between);
+          @include flexbox(
+            $justify-content: space-between,
+            $align-items: flex-start
+          );
           width: 100%;
+          height: 100%;
+          gap: 0.5rem;
 
           .general-information {
             @include flexbox($flex-direction: column, $align-items: flex-start);
@@ -73,7 +79,7 @@
 
         .cart-info {
           @include flexbox($flex-direction: column);
-          gap: 0.5rem;
+          padding: 0.5rem;
         }
 
         .product-AddToCart {
@@ -81,16 +87,80 @@
           flex-wrap: wrap;
           gap: 0.5rem;
           width: 100%;
+          height: 100%;
           margin: 0.3rem 0;
         }
 
         .product-information {
           text-align: justify;
           font-size: 0.9rem;
+          height: 100%;
 
           .information-title {
             font-weight: 700;
             margin-bottom: 0.3rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .modal-overlay {
+    height: 100%;
+    .modal {
+      width: 80%;
+
+      @keyframes appear {
+        0% {
+          transform: translateY(20px);
+        }
+      }
+
+      .modal-content {
+        @include flexbox($flex-direction: column);
+        padding: 1rem 2rem;
+        gap: 1rem;
+        height: 100%;
+
+        .modal-left-side {
+          .modal-img {
+            height: 200px;
+          }
+        }
+
+        .modal-right-side {
+          gap: 1rem;
+          padding: 0 1rem;
+          width: 100%;
+
+          .general {
+            .general-information {
+              gap: 0.5rem;
+
+              .product-name {
+                font-size: 1.2rem;
+              }
+
+              .product-portion {
+                font-size: 0.8rem;
+              }
+            }
+          }
+
+          .cart-info {
+            @include flexbox;
+          }
+
+          .product-AddToCart {
+            gap: 0.2rem;
+
+            button {
+              font-size: 0.7rem;
+              height: 40px;
+              max-width: 100px;
+            }
           }
         }
       }

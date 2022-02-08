@@ -13,7 +13,7 @@ const data = {
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
       size: '',
-      quantity: 1,
+      quantity: '',
     },
     {
       id: '2',
@@ -23,7 +23,7 @@ const data = {
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
       size: '',
-      quantity: 1,
+      quantity: '',
     },
     {
       id: '3',
@@ -33,7 +33,7 @@ const data = {
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
       size: '',
-      quantity: 1,
+      quantity: '',
     },
     {
       id: '4',
@@ -43,7 +43,7 @@ const data = {
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
       size: '',
-      quantity: 1,
+      quantity: '',
     },
     {
       id: '5',
@@ -53,7 +53,7 @@ const data = {
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
       size: '',
-      quantity: 1,
+      quantity: '',
     },
     {
       id: '6',
@@ -63,7 +63,7 @@ const data = {
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
       size: '',
-      quantity: 1,
+      quantity: '',
     },
   ],
 };

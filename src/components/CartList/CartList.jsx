@@ -14,25 +14,16 @@ const CartList = () => {
   const [_, deleteCartItem] = useDeleteCartItem();
   const [quantity, setQuantity] = useState(1);
 
-  const cartItemPrice = () => {
-    let price = cartItems
-      .map((item) => item.price * quantity)
-      .reduce((total, price) => total + price);
-    return price;
+  const cartItemPrice = (aa) => {
+    let price = cartItems.map((item) => {
+      return quantity * item.price;
+    });
+    console.log(price);
   };
 
   const DeletToCart = () => {
-    deleteCartItem(cartItems);
-  };
-
-  const attQuantity = (item) => {
-    setQuantity(quantity + 1);
-    if (item == 0) {
-      if (window.confirm('Você realmente deseja remover esse item?')) {
-        return DeletToCart();
-      } else {
-        return;
-      }
+    if (window.confirm('Deseja excluir esse item?') == true) {
+      deleteCartItem(cartItems);
     }
   };
 
@@ -56,17 +47,17 @@ const CartList = () => {
               <div className="cart-table">
                 <table>
                   <thead>
-                    <tr className="trtr">
-                      <th scope="col"></th>
-                      <th scope="col">PRODUTO</th>
-                      <th scope="col">QUANTIDADE</th>
-                      <th scope="col">TAMANHO</th>
-                      <th scope="col">SUBTOTAL</th>
+                    <tr>
+                      <th></th>
+                      <th>PRODUTO</th>
+                      <th>UN</th>
+                      <th>TAM</th>
+                      <th>SUBTOTAL</th>
                     </tr>
                   </thead>
                   <tbody>
                     {cartItems.map((item, keyId) => (
-                      <tr key={keyId} className="trtr">
+                      <tr key={keyId}>
                         <td scope="row">
                           <img
                             className="cart-image"
@@ -77,14 +68,14 @@ const CartList = () => {
                         <td>{item.name}</td>
                         <td>
                           <InputQuantity
-                            quantity={attQuantity}
-                            value={quantity}
+                            val={quantity}
+                            onClick={() => cartItemPrice(quantity)}
                           />
                         </td>
                         <td>
                           <SelectSize value="m" />
                         </td>
-                        <td>{transformCurrency(item.price)}</td>
+                        <td>{item.price * quantity}</td>
                         <td className="delete-section">
                           <IoMdClose
                             className="delete-btn"
@@ -103,9 +94,6 @@ const CartList = () => {
               <div className="subtotal-title">Total no carrinho</div>
               <div className="subtotal-price">
                 <div className="subtotal-price-text">Subtotal:</div>
-                <div className="subtotal-price-total">
-                  {transformCurrency(cartItemPrice())}
-                </div>
               </div>
             </div>
             <div className="subtotal-adress">
@@ -114,24 +102,25 @@ const CartList = () => {
                 className="zip-code"
                 placeholder="Digite seu CEP"
               />
-              <Button textBtn="Atualizar" onClick={() => alert('FOI')} />
+              <Button
+                textBtn="Atualizar"
+                onClick={() => alert('Valor do frete adicionado a compra.')}
+              />
             </div>
             <div className="subtotal-final">
               <div className="subtotal-final-total">
                 <div className="total-text">Total:</div>
                 <div className="total-price">
-                  <div className="price">
-                    {transformCurrency(cartItemPrice())}
-                  </div>
+                  <div className="price">{cartItemPrice()}</div>
                   <div className="price-portion">
                     ou até 3x de
-                    {transformCurrency(cartItemPrice() / 3)}
+                    {cartItemPrice() / 3}
                   </div>
                 </div>
               </div>
               <Button
                 textBtn="Finalizar compra"
-                onClick={() => alert('comprou')}
+                onClick={() => alert('Compra finalizada!')}
               />
             </div>
           </div>

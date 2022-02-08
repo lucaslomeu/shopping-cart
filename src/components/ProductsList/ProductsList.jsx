@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import data from '../../storage';
 import Modal from '../Modal/Modal';
 import './ProductsList.scss';
 import { AiOutlinePlusCircle, AiOutlineBars } from 'react-icons/ai';

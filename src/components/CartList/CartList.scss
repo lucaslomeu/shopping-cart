@@ -3,7 +3,6 @@
 .cart-container {
   @include flexbox($align-items: flex-start);
   margin: 2rem;
-  height: 100%;
 
   .cart {
     @include flexbox($align-items: flex-start, $justify-content: space-between);
@@ -154,6 +153,53 @@
 
     button {
       width: 300px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .cart-container {
+    .cart {
+      @include flexbox($justify-content: center);
+      flex-wrap: wrap;
+
+      .cart-subtotal {
+        @include flexbox($flex-direction: column, $align-items: flex-start);
+        width: 80%;
+        min-width: 350px;
+        padding: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .cart-container {
+    .cart {
+      .cart-display {
+        .cart-list {
+          margin-bottom: 0.5rem;
+
+          .cart-table {
+            .cart-image {
+              display: none;
+            }
+
+            table tr {
+              padding: 0.1rem;
+            }
+
+            table th,
+            table td {
+              padding: 0.5rem;
+            }
+
+            table th {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
     }
   }
 }

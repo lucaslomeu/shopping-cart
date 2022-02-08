@@ -7,4 +7,13 @@
   background-color: var(--text-color);
   color: var(--light-color);
   letter-spacing: 0.05rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 780px) {
+  .shipping {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    text-align: center;
+  }
 }
