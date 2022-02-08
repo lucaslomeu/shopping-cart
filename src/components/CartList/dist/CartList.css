@@ -53,7 +53,8 @@ option {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin: 2rem;
+  padding: 2rem;
+  min-height: 100%;
 }
 .cart-container .cart {
   display: flex;
@@ -206,7 +207,9 @@ option {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
   height: 100%;
+  width: 100vw;
   gap: 0.5rem;
 }
 .cart-container .cart-empty button {

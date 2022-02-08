@@ -17,7 +17,10 @@ const Modal = ({
   const [_, addCartItem] = useAddCartItem();
 
   const handleOutsideClick = (e) => {
-    if (e.target.id === id) onClose();
+    if (e.target.id === id) {
+      onClose();
+    }
+    console.log(e.target);
   };
 
   const AddToCart = () => {
@@ -40,7 +43,7 @@ const Modal = ({
   };
 
   return (
-    <div className="modal-overlay" onClick={handleOutsideClick}>
+    <div id={id} className="modal-overlay" onClick={handleOutsideClick}>
       <div className="modal" onClick={onClick}>
         <div className="modal-content">
           <div className="modal-left-side">
