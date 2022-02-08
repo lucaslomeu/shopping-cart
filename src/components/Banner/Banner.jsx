@@ -1,9 +1,8 @@
 import React from 'react';
 import './Banner.scss';
-import BannerImg from '../../assets/images/banner.jpg';
 
 const Banner = () => {
-  return <img className="banner" src={BannerImg} alt="Fashion Men" />;
+  return <div className="banner" />;
 };
 
 export default Banner;

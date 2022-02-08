@@ -4,10 +4,10 @@ import CartList from '../../components/CartList/CartList';
 
 function Cart() {
   return (
-    <>
+    <div className="container">
       <Header />
       <CartList />
-    </>
+    </div>
   );
 }
 

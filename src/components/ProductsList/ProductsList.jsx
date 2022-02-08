@@ -4,11 +4,7 @@ import Modal from '../Modal/Modal';
 import './ProductsList.scss';
 import { AiOutlinePlusCircle, AiOutlineBars } from 'react-icons/ai';
 
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.production.min';
-
 const ProductsList = () => {
-  let navigate = useNavigate();
   const { products } = data;
   const [item, setItem] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,8 +20,15 @@ const ProductsList = () => {
     }
   };
 
+  const transformCurrency = (currency) => {
+    return currency.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+  };
+
   return (
-    <div className="container">
+    <div className="product-container">
       <div className="products">
         <div className="product-header">
           <div className="product-type">Camisetas</div>
@@ -58,7 +61,9 @@ const ProductsList = () => {
               </div>
               <div className="product-info">
                 <div className="product-name">{product.name}</div>
-                <div className="product-price">R${product.price}</div>
+                <div className="product-price">
+                  {transformCurrency(product.price)}
+                </div>
               </div>
             </div>
           ))}

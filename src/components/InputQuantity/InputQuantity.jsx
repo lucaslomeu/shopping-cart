@@ -1,14 +1,13 @@
 import React from 'react';
 import './InputQuantity.scss';
 
-const InputQuantity = ({ quantity, value }) => {
+const InputQuantity = ({ quantity }) => {
   return (
     <input
       className="product-quantity"
       type="number"
       min="0"
-      onChange={quantity}
-      defaultValue={value}
+      defaultValue={quantity}
     />
   );
 };

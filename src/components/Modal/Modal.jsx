@@ -16,8 +16,8 @@ const Modal = ({
 }) => {
   let navigate = useNavigate();
   const [_, addCartItem] = useAddCartItem();
-  const [size, setSize] = useState('p');
-  const [quantity, setQuantity] = useState(0);
+  const [size, setSize] = useState(productDatabase.size);
+  const [quantity, setQuantity] = useState(productDatabase.quantity);
 
   const handleOutsideClick = (e) => {
     if (e.target.id === id) onClose();
@@ -26,6 +26,10 @@ const Modal = ({
   const AddToCart = () => {
     addCartItem(productDatabase);
     navigate('/');
+  };
+
+  const AttSize = (item) => {
+    setSize(item);
   };
 
   const BuyProduct = () => {
@@ -64,8 +68,8 @@ const Modal = ({
                 </div>
               </div>
               <div className="cart-info">
-                <InputQuantity quantity={(e) => setQuantity(e.target.value)} />
-                <SelectSize size={(e) => console.log(e.target.value)} />
+                <InputQuantity quantity={quantity} />
+                <SelectSize value={AttSize} />
               </div>
             </div>
 

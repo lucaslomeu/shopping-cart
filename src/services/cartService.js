@@ -7,7 +7,9 @@ const persistToLocalStorage = (cartItems) => {
 
 const retrieveFromLocalStorage = () => {
   const cartItems = localStorage.getItem('cartItems');
-  if (cartItems) return JSON.parse(cartItems);
+  if (cartItems) {
+    return JSON.parse(cartItems);
+  }
   return null;
 };
 
@@ -22,11 +24,12 @@ const useAddCartItem = () => {
   return [cartItems, addCartItem];
 };
 
-const useDeleteCartItem = (item) => {
+const useDeleteCartItem = () => {
   const [cartItems, setCartItems] = useState(retrieveFromLocalStorage() || []);
 
   function deleteCartItem(item) {
-    setCartItems([...cartItems, item]);
+    const itemToDelete = cartItems.splice(1, 1);
+    setCartItems(itemToDelete);
     persistToLocalStorage(cartItems);
   }
 

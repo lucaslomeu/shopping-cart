@@ -1,15 +1,13 @@
 import React from 'react';
 import './SelectSize.scss';
 
-const SelectSize = ({ size }) => {
+const SelectSize = ({ value }) => {
+  const handleChange = (e) => {
+    value = e.target.value;
+    console.log(value);
+  };
   return (
-    <select
-      name="size"
-      id="size"
-      className="product-size"
-      onChange={size}
-      defaultValue="P"
-    >
+    <select className="product-size" onChange={handleChange}>
       <option value="tam">TAM</option>
       <option value="p">P</option>
       <option value="m">M</option>

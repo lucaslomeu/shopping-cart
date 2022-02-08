@@ -1,104 +1,159 @@
 @import '../../assets/styles/reset.scss';
 
-.cart {
+.cart-container {
   @include flexbox($align-items: flex-start);
-  padding: 2rem;
+  height: calc(100vh - var(--header-height));
+  margin: 2rem;
 
-  .cart-display {
-    @include flexbox($flex-direction: column);
+  .cart {
+    @include flexbox($align-items: flex-start, $justify-content: space-between);
+    flex-wrap: wrap;
     width: 80%;
 
-    .cart-list {
-      @include flexbox($justify-content: center, $flex-direction: column);
-      width: 100%;
+    .cart-display {
+      @include flexbox($flex-direction: column);
       text-align: center;
-      padding: 0 1rem;
-      margin-bottom: 3rem;
 
-      .cart-table {
+      .cart-list {
+        @include flexbox(
+          $justify-content: space-between,
+          $flex-direction: column
+        );
+        margin-bottom: 3rem;
+
+        .cart-table {
+          @include flexbox(
+            $flex-direction: column,
+            $align-items: space-between
+          );
+          width: 100%;
+
+          .cart-image {
+            height: 90px;
+          }
+
+          table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            table-layout: fixed;
+          }
+
+          table tr {
+            border: 1px solid var(--border-color);
+            padding: 0.3rem;
+          }
+
+          table th,
+          table td {
+            padding: 1rem;
+            text-align: center;
+          }
+
+          table th {
+            font-size: 1rem;
+            text-transform: uppercase;
+          }
+
+          .delete-section {
+            .delete-btn {
+              @include flexbox;
+              font-size: 1rem;
+              cursor: pointer;
+
+              &:hover,
+              &:active,
+              &:focus {
+                color: var(--warning-color);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .cart-subtotal {
+      @include flexbox($flex-direction: column, $align-items: flex-start);
+      width: 40%;
+      height: 100%;
+      border: 2px solid var(--border-color);
+      gap: 2rem;
+      padding: 1rem;
+
+      .subtotal-info {
+        @include flexbox($flex-direction: column, $align-items: flex-start);
         width: 100%;
+        gap: 0.5rem;
 
-        .cart-image {
-          width: 80px;
+        .subtotal-title {
+          font-size: 1.3rem;
+          font-weight: 700;
         }
 
-        .tr {
-          border: 3px solid red;
+        .subtotal-price {
+          @include flexbox($justify-content: space-between);
+          font-size: 1.1rem;
+        }
+      }
+
+      .subtotal-adress {
+        @include flexbox;
+        gap: 1rem;
+        width: 100%;
+
+        .zip-code {
+          height: 40px;
+          border: none;
+          border-bottom: 1px solid var(--border-color);
+          padding: 0.2rem;
+          width: 100%;
+          cursor: text;
+
+          &:hover,
+          &:active,
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .subtotal-final {
+        @include flexbox($flex-direction: column);
+        width: 100%;
+        gap: 0.5rem;
+
+        .subtotal-final-total {
+          @include flexbox($justify-content: space-between);
+          width: 100%;
+
+          .total-price {
+            @include flexbox($align-items: flex-end, $flex-direction: column);
+
+            .price {
+              font-size: 1.1rem;
+              font-weight: 700;
+            }
+            .price-portion {
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        button {
+          width: 100%;
         }
       }
     }
   }
 
-  .cart-subtotal {
-    @include flexbox($flex-direction: column, $align-items: flex-start);
-    width: 40%;
+  .cart-empty {
+    @include flexbox($flex-direction: column);
     height: 100%;
-    border: 2px solid var(--border-color);
-    gap: 2rem;
-    padding: 1rem;
+    gap: 0.5rem;
 
-    .subtotal-info {
-      @include flexbox($flex-direction: column, $align-items: flex-start);
-      width: 100%;
-      gap: 0.5rem;
-
-      .subtotal-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-      }
-
-      .subtotal-price {
-        @include flexbox($justify-content: space-between);
-        font-size: 1.1rem;
-      }
-    }
-
-    .subtotal-adress {
-      @include flexbox;
-      gap: 1rem;
-      width: 100%;
-
-      .zip-code {
-        height: 40px;
-        border: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 0.2rem;
-        width: 100%;
-        cursor: text;
-
-        &:hover,
-        &:active,
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-
-    .subtotal-final {
-      @include flexbox($flex-direction: column);
-      width: 100%;
-      gap: 0.5rem;
-
-      .subtotal-final-total {
-        @include flexbox($justify-content: space-between);
-        width: 100%;
-
-        .total-price {
-          @include flexbox($align-items: flex-end, $flex-direction: column);
-
-          .price {
-            font-size: 1.1rem;
-            font-weight: 700;
-          }
-          .price-portion {
-            font-size: 0.8rem;
-          }
-        }
-      }
-
-      button {
-        width: 100%;
-      }
+    button {
+      width: 300px;
     }
   }
 }
