@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap");
+:root {
+  --text-color: #000000;
+  --hover-color: #8e806a;
+  --border-color: #e0e0e0;
+  --light-color: #ffffff;
+  --warning-color: #b33030;
+  --header-height: 90px;
+  --header-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a:active,
+a:visited {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+select,
+input[type=number] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+option {
+  height: 150px;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem;
+}
+.cart-container .cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.cart-container .cart .cart-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.cart-container .cart .cart-display .cart-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.cart-container .cart .cart-display .cart-list .cart-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  width: 100%;
+}
+.cart-container .cart .cart-display .cart-list .cart-table .cart-image {
+  height: 90px;
+}
+.cart-container .cart .cart-display .cart-list .cart-table table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+}
+.cart-container .cart .cart-display .cart-list .cart-table table tr {
+  border: 1px solid var(--border-color);
+  padding: 0.3rem;
+}
+.cart-container .cart .cart-display .cart-list .cart-table table th,
+.cart-container .cart .cart-display .cart-list .cart-table table td {
+  padding: 1rem;
+  text-align: center;
+}
+.cart-container .cart .cart-display .cart-list .cart-table table th {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.cart-container .cart .cart-display .cart-list .cart-table .delete-section .delete-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.cart-container .cart .cart-display .cart-list .cart-table .delete-section .delete-btn:hover, .cart-container .cart .cart-display .cart-list .cart-table .delete-section .delete-btn:active, .cart-container .cart .cart-display .cart-list .cart-table .delete-section .delete-btn:focus {
+  color: var(--warning-color);
+}
+.cart-container .cart .cart-subtotal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 50%;
+  height: 100%;
+  border: 2px solid var(--border-color);
+  gap: 2rem;
+  padding: 1rem;
+}
+.cart-container .cart .cart-subtotal .subtotal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 0.5rem;
+}
+.cart-container .cart .cart-subtotal .subtotal-info .subtotal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.cart-container .cart .cart-subtotal .subtotal-info .subtotal-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+}
+.cart-container .cart .cart-subtotal .subtotal-adress {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.cart-container .cart .cart-subtotal .subtotal-adress button {
+  font-size: 0.7rem;
+}
+.cart-container .cart .cart-subtotal .subtotal-adress .zip-code {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.2rem;
+  width: 100%;
+  cursor: text;
+}
+.cart-container .cart .cart-subtotal .subtotal-adress .zip-code:hover, .cart-container .cart .cart-subtotal .subtotal-adress .zip-code:active, .cart-container .cart .cart-subtotal .subtotal-adress .zip-code:focus {
+  outline: none;
+}
+.cart-container .cart .cart-subtotal .subtotal-final {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+.cart-container .cart .cart-subtotal .subtotal-final .subtotal-final-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.cart-container .cart .cart-subtotal .subtotal-final .subtotal-final-total .total-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.cart-container .cart .cart-subtotal .subtotal-final .subtotal-final-total .total-price .price {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.cart-container .cart .cart-subtotal .subtotal-final .subtotal-final-total .total-price .price-portion {
+  font-size: 0.8rem;
+}
+.cart-container .cart .cart-subtotal .subtotal-final button {
+  width: 100%;
+}
+.cart-container .cart-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 0.5rem;
+}
+.cart-container .cart-empty button {
+  width: 300px;
+}
+
+@media (max-width: 1200px) {
+  .cart-container .cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cart-container .cart .cart-subtotal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    min-width: 350px;
+    padding: 2rem;
+  }
+}
+@media (max-width: 780px) {
+  .cart-container .cart .cart-display .cart-list {
+    margin-bottom: 0.5rem;
+  }
+  .cart-container .cart .cart-display .cart-list .cart-table .cart-image {
+    display: none;
+  }
+  .cart-container .cart .cart-display .cart-list .cart-table table tr {
+    padding: 0.1rem;
+  }
+  .cart-container .cart .cart-display .cart-list .cart-table table th,
+.cart-container .cart .cart-display .cart-list .cart-table table td {
+    padding: 0.5rem;
+  }
+  .cart-container .cart .cart-display .cart-list .cart-table table th {
+    font-size: 0.8rem;
+  }
+}
