@@ -3,6 +3,7 @@
 .cart-container {
   @include flexbox($align-items: flex-start);
   margin: 2rem;
+  height: 100%;
 
   .cart {
     @include flexbox($align-items: flex-start, $justify-content: space-between);

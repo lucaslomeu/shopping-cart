@@ -1,7 +1,7 @@
 @import '../../assets/styles/reset.scss';
 
 .navbar {
-  @include flexbox($justify-content: space-around);
+  @include flexbox($justify-content: flex-start, $flex-direction: column);
   width: var(--header-width);
   height: var(--header-height);
   top: 0;
@@ -11,57 +11,63 @@
   background-color: var(--light-color);
   font-size: 1rem;
 
-  .nav-itens {
-    @include flexbox($flex-direction: row);
+  .nav {
+    @include flexbox;
     width: 100%;
-    gap: 1.5rem;
+    height: 100%;
 
-    .nav-subitem {
-      @include flexbox;
-      cursor: pointer;
+    .nav-itens {
+      @include flexbox($flex-direction: row);
+      width: 100%;
+      gap: 1.5rem;
 
-      &:hover {
-        color: var(--hover-color);
+      .nav-subitem {
+        @include flexbox;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--hover-color);
+        }
+      }
+
+      .nav-user,
+      .nav-cart {
+        font-size: 1.2rem;
       }
     }
 
-    .nav-user,
-    .nav-cart {
-      font-size: 1.2rem;
+    .nav-title {
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      text-transform: uppercase;
     }
+
+    // .hamburger {
+    //   @include flexbox($justify-content: space-around);
+    //   width: 2rem;
+    //   height: 2rem;
+    //   flex-flow: column nowrap;
+    //   z-index: 10;
+    // }
+
+    // .burger {
+    //   width: 2rem;
+    //   height: 0.25rem;
+    //   border-radius: 10px;
+    //   background-color: #000;
+    //   transform-origin: 1px -10px;
+    //   transition: all 0.3s linear;
+    // }
+
+    // @media (max-width: 767px) {
+    //   .hamburger {
+    //     display: fixed;
+    //     padding-top: 10px;
+    //     margin-left: 10px;
+    //     margin-right: 10px;
+    //     z-index: 10;
+    //   }
+    // }
   }
-
-  .nav-title {
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    text-transform: uppercase;
-  }
-
-  // .hamburger {
-  //   @include flexbox($justify-content: space-around);
-  //   width: 2rem;
-  //   height: 2rem;
-  //   flex-flow: column nowrap;
-  //   z-index: 10;
-  // }
-
-  // .burger {
-  //   width: 2rem;
-  //   height: 0.25rem;
-  //   border-radius: 10px;
-  //   background-color: #000;
-  //   transform-origin: 1px -10px;
-  //   transition: all 0.3s linear;
-  // }
-
-  // @media (max-width: 767px) {
-  //   .hamburger {
-  //     display: fixed;
-  //     padding-top: 10px;
-  //     margin-left: 10px;
-  //     margin-right: 10px;
-  //     z-index: 10;
-  //   }
-  // }
 }

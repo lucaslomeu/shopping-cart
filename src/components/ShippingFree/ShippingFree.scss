@@ -1,0 +1,10 @@
+@import '../../assets/styles/reset.scss';
+
+.shipping {
+  @include flexbox;
+  width: 100%;
+  height: 50px;
+  background-color: var(--text-color);
+  color: var(--light-color);
+  letter-spacing: 0.05rem;
+}

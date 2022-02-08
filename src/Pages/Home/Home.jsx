@@ -21,9 +21,16 @@ const Home = () => {
     setProducts(filterProduct);
   };
 
+  const handleChange = (value) => {
+    if (value === '' || !value) {
+      setProducts(data.products);
+      return;
+    }
+  };
+
   return (
     <div className="container">
-      <Header onClick={handleClick} />
+      <Header onClick={handleClick} onChange={handleChange} />
       <Banner />
       <ProductsList products={products} />
       <Footer />

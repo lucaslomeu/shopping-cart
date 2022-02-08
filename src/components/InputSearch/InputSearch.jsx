@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import './InputSearch.scss';
 
-const InputSearch = ({ onClick }) => {
+const InputSearch = ({ onClick, onChange }) => {
   const [value, setValue] = useState('');
 
   const handleSearch = (e) => {
     setValue(e.target.value);
+    onChange();
   };
 
   const handleKeyPress = (e) => {
