@@ -17,7 +17,7 @@ const Header = () => {
         <div className="nav-subitem">Tênis</div>
       </div>
       <Link to="/" className="nav-title">
-        SHOPPING
+        LomeuShop
       </Link>
       <div className="nav-itens">
         <input
