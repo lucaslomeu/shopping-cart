@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
 
@@ -9,13 +9,24 @@ import InputSearch from '../InputSearch/InputSearch';
 
 const Header = ({ onClick }) => {
   const cartItems = useGetCartItems();
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+
+  const toggleHamburger = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
+  };
 
   return (
     <header className="navbar">
       <div className="nav-itens">
-        <div className="nav-subitem">Camiseta</div>
-        <div className="nav-subitem">Boné</div>
-        <div className="nav-subitem">Tênis</div>
+        <Link to="/" className="nav-subitem">
+          Camiseta
+        </Link>
+        <Link to="/" className="nav-subitem">
+          Boné
+        </Link>
+        <Link to="/" className="nav-subitem">
+          Tênis
+        </Link>
       </div>
       <Link to="/" className="nav-title">
         LomeuShop
@@ -29,6 +40,11 @@ const Header = ({ onClick }) => {
           <CartCount cartCount={cartItems} />
         </Link>
       </div>
+      {/* <div className="hamburger" onClick={toggleHamburger}>
+        <div className="burger burger1" />
+        <div className="burger burger2" />
+        <div className="burger burger3" />
+      </div> */}
     </header>
   );
 };

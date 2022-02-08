@@ -25,15 +25,13 @@ const Modal = ({
 
   const AddToCart = () => {
     addCartItem(productDatabase);
-    navigate('/');
-  };
-
-  const AttSize = (item) => {
-    setSize(item);
   };
 
   const BuyProduct = () => {
-    addCartItem(productDatabase);
+    const aa = () => {
+      addCartItem(productDatabase);
+    };
+
     navigate('/cart');
   };
 
@@ -69,7 +67,7 @@ const Modal = ({
               </div>
               <div className="cart-info">
                 <InputQuantity quantity={quantity} />
-                <SelectSize value={AttSize} />
+                <SelectSize />
               </div>
             </div>
 

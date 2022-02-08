@@ -82,7 +82,7 @@ const CartList = () => {
                           />
                         </td>
                         <td>
-                          <SelectSize value={() => console.log('clicado')} />
+                          <SelectSize value="m" />
                         </td>
                         <td>{transformCurrency(item.price)}</td>
                         <td className="delete-section">
