@@ -9,17 +9,21 @@ const Footer = () => {
       <div className="footer-content">
         <div className="institutional">
           <div className="footer-title">Institucional</div>
-          <div className="institutional-item">Quem somos</div>
-          <div className="institutional-item">FAQ</div>
-          <div className="institutional-item">Blog</div>
-          <div className="institutional-item">Parceiros</div>
+          <div className="institutional-items">
+            <div className="institutional-item">Quem somos</div>
+            <div className="institutional-item">FAQ</div>
+            <div className="institutional-item">Blog</div>
+            <div className="institutional-item">Parceiros</div>
+          </div>
         </div>
         <div className="info-links">
           <div className="footer-title">Atendimento</div>
-          <div className="info-item">Termos de Privacidade</div>
-          <div className="info-item">Prazo e Formas de Entrega</div>
-          <div className="info-item">Trocas e Devoluções</div>
-          <div className="info-item">Central de Atendimento</div>
+          <div className="info-items">
+            <div className="info-item">Termos de Privacidade</div>
+            <div className="info-item">Prazo e Formas de Entrega</div>
+            <div className="info-item">Trocas e Devoluções</div>
+            <div className="info-item">Central de Atendimento</div>
+          </div>
         </div>
         <div className="social-links">
           <div className="footer-title">Redes Sociais</div>

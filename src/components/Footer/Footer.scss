@@ -15,18 +15,20 @@
   .footer-content {
     @include flexbox($justify-content: space-around, $align-items: flex-start);
     width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
 
     .footer-title {
       color: var(--text-color);
       font-size: 1.3rem;
       font-weight: 700;
       text-transform: uppercase;
+      margin-bottom: 0.5rem;
     }
 
-    .institutional,
-    .info-links,
-    .social-items,
-    .social-links {
+    .institutional-items,
+    .info-items,
+    .social-items {
       @include flexbox($flex-direction: column, $align-items: flex-start);
       gap: 0.5rem;
     }
@@ -61,5 +63,65 @@
     @include flexbox;
     width: 100%;
     font-weight: 700;
+  }
+}
+
+@media (max-width: 780px) {
+  .footer {
+    @include flexbox(
+      $justify-content: space-around,
+      $align-items: flex-start,
+      $flex-direction: column
+    );
+    padding: 0.5rem;
+    width: 100%;
+    background-color: var(--border-color);
+    color: var(--text-color);
+    gap: 1rem;
+
+    .footer-content {
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+
+      .footer-title {
+        font-size: 1rem;
+      }
+
+      .institutional,
+      .info-links,
+      .social-links {
+        @include flexbox($flex-direction: column, $align-items: center);
+        margin-bottom: 0.5rem;
+      }
+
+      .institutional-items,
+      .info-items,
+      .social-items {
+        @include flexbox($justify-content: center);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .side-right-footer {
+        @include flexbox;
+
+        .payment {
+          img {
+            width: 200px;
+          }
+        }
+
+        .security {
+          img {
+            width: 100px;
+          }
+        }
+      }
+    }
+
+    .copyright {
+      margin-bottom: 0.5rem;
+    }
   }
 }

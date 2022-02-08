@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap");
+:root {
+  --text-color: #000000;
+  --hover-color: #8e806a;
+  --border-color: #e0e0e0;
+  --light-color: #ffffff;
+  --warning-color: #b33030;
+  --header-height: 90px;
+  --header-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a:active,
+a:visited {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+select,
+input[type=number] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+option {
+  height: 150px;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 1.3rem 0;
+  width: 100%;
+  background-color: var(--border-color);
+  color: var(--text-color);
+  gap: 1.3rem;
+}
+.footer .footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer .footer-content .footer-title {
+  color: var(--text-color);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.footer .footer-content .institutional-items,
+.footer .footer-content .info-items,
+.footer .footer-content .social-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.footer .footer-content .institutional-item,
+.footer .footer-content .info-item,
+.footer .footer-content .social-item {
+  cursor: pointer;
+}
+.footer .footer-content .institutional-item:hover,
+.footer .footer-content .info-item:hover,
+.footer .footer-content .social-item:hover {
+  color: var(--hover-color);
+}
+.footer .footer-content .side-right-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.footer .footer-content .side-right-footer .payment {
+  width: 100%;
+}
+.footer .footer-content .side-right-footer .security img {
+  width: 150px;
+}
+.footer .copyright {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0.5rem;
+    width: 100%;
+    background-color: var(--border-color);
+    color: var(--text-color);
+    gap: 1rem;
+  }
+  .footer .footer-content {
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .footer .footer-content .footer-title {
+    font-size: 1rem;
+  }
+  .footer .footer-content .institutional,
+.footer .footer-content .info-links,
+.footer .footer-content .social-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .footer .footer-content .institutional-items,
+.footer .footer-content .info-items,
+.footer .footer-content .social-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .footer .footer-content .side-right-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer .footer-content .side-right-footer .payment img {
+    width: 200px;
+  }
+  .footer .footer-content .side-right-footer .security img {
+    width: 100px;
+  }
+  .footer .copyright {
+    margin-bottom: 0.5rem;
+  }
+}
