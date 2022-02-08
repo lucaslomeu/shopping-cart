@@ -1,0 +1,24 @@
+@import '../../assets/styles/reset.scss';
+
+.search-bar {
+  @include flexbox;
+  height: 30px;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 0.5rem;
+
+  input[type='search'] {
+    padding: 0.2rem;
+    border: none;
+    width: 200px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search-btn {
+    cursor: pointer;
+  }
+}

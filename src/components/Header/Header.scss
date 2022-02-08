@@ -29,21 +29,6 @@
     .nav-cart {
       font-size: 1.2rem;
     }
-
-    input[type='search'] {
-      border: none;
-      border-bottom: 1px solid var(--border-color);
-      padding: 0.2rem;
-      width: 180px;
-      height: 25px;
-      cursor: text;
-
-      &:hover,
-      &:active,
-      &:focus {
-        outline: none;
-      }
-    }
   }
 
   .nav-title {

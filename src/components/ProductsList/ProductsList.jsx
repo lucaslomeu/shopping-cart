@@ -4,8 +4,7 @@ import Modal from '../Modal/Modal';
 import './ProductsList.scss';
 import { AiOutlinePlusCircle, AiOutlineBars } from 'react-icons/ai';
 
-const ProductsList = () => {
-  const { products } = data;
+const ProductsList = ({ products }) => {
   const [item, setItem] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [sort, setSort] = useState('asc');

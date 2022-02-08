@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
 
 import './Header.scss';
 import CartCount from '../CartCount/CartCount';
-import { useGetCartItems, useAddCartItem } from '../../services/cartService';
+import { useGetCartItems } from '../../services/cartService';
+import InputSearch from '../InputSearch/InputSearch';
 
-const Header = () => {
+const Header = ({ onClick }) => {
   const cartItems = useGetCartItems();
 
   return (
@@ -20,11 +21,7 @@ const Header = () => {
         LomeuShop
       </Link>
       <div className="nav-itens">
-        <input
-          type="search"
-          className="nav-subitem"
-          placeholder="Digite sua busca..."
-        ></input>
+        <InputSearch onClick={onClick} />
         <div className="nav-subitem nav-user">
           <FiUser />
         </div>
