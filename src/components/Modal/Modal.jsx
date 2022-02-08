@@ -25,11 +25,8 @@ const Modal = ({
   };
 
   const BuyProduct = () => {
-    const aa = () => {
-      addCartItem(productDatabase);
-    };
-
-    navigate('/cart');
+    addCartItem(productDatabase);
+    navigate('/cart', { state: AddToCart });
   };
 
   const transformCurrency = (currency) => {
