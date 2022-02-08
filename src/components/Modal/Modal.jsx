@@ -17,10 +17,7 @@ const Modal = ({
   const [_, addCartItem] = useAddCartItem();
 
   const handleOutsideClick = (e) => {
-    if (e.target.id === id) {
-      onClose();
-    }
-    console.log(e.target);
+    if (e.target.id === id) onClose();
   };
 
   const AddToCart = () => {

@@ -60,6 +60,9 @@ option {
   letter-spacing: 0.05rem;
   font-size: 0.9rem;
 }
+.shipping .free {
+  font-weight: 700;
+}
 
 @media (max-width: 780px) {
   .shipping {

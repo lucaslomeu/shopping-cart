@@ -7,6 +7,7 @@ const ProductsList = ({ products }) => {
   const [item, setItem] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [sort, setSort] = useState('asc');
+  const [dispositionGrid, setDispositionGrid] = useState(true);
 
   const sortBy = () => {
     if (sort === 'asc') {
@@ -25,13 +26,18 @@ const ProductsList = ({ products }) => {
     });
   };
 
+  const dispositionProducts = () => {
+    setDispositionGrid(!dispositionGrid);
+  };
+
+  console.log(dispositionGrid);
   return (
     <div className="product-container">
       <div className="products">
         <div className="product-header">
           <div className="product-type">Camisetas</div>
           <div className="header-side">
-            <div className="product-display">
+            <div className="product-display" onClick={dispositionProducts}>
               <AiOutlineBars />
             </div>
             <select className="product-filter" onChange={() => sortBy()}>
@@ -40,38 +46,72 @@ const ProductsList = ({ products }) => {
             </select>
           </div>
         </div>
-        <div className="products-list">
-          {products.map((product, idKey) => (
-            <div key={idKey} className="product-item">
-              <div className="section-img">
-                <img className="product-img" src={product.image} />
-                <div
-                  className="product-overlay"
-                  onClick={() => {
-                    setIsModalVisible(true);
-                    setItem({ product });
-                  }}
-                >
-                  <div className="btn-img">
-                    <AiOutlinePlusCircle />
+        {dispositionGrid ? (
+          <div className="products-list">
+            {products.map((product, idKey) => (
+              <div key={idKey} className="product-item">
+                <div className="section-img">
+                  <img className="product-img" src={product.image} />
+                  <div
+                    className="product-overlay"
+                    onClick={() => {
+                      setIsModalVisible(true);
+                      setItem({ product });
+                    }}
+                  >
+                    <div className="btn-img">
+                      <AiOutlinePlusCircle />
+                    </div>
+                  </div>
+                </div>
+                <div className="product-info">
+                  <div className="product-name">{product.name}</div>
+                  <div className="product-price">
+                    {transformCurrency(product.price)}
                   </div>
                 </div>
               </div>
-              <div className="product-info">
-                <div className="product-name">{product.name}</div>
-                <div className="product-price">
-                  {transformCurrency(product.price)}
+            ))}
+          </div>
+        ) : (
+          <div className="products-list">
+            {products.map((product, idKey) => (
+              <div key={idKey} className="product-item-list">
+                <div className="section-img-list">
+                  <img className="product-img-list" src={product.image} />
+                  <div
+                    className="product-overlay"
+                    onClick={() => {
+                      setIsModalVisible(true);
+                      setItem({ product });
+                    }}
+                  >
+                    <div className="btn-img">
+                      <AiOutlinePlusCircle />
+                    </div>
+                  </div>
+                </div>
+                <div className="product-info-list">
+                  <div className="list-infos">
+                    <div className="product-name">{product.name}</div>
+                    <div className="product-price">
+                      {transformCurrency(product.price)}
+                    </div>
+                  </div>
+                  <div className="product-description">
+                    {product.description}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          {isModalVisible && (
-            <Modal
-              onClose={() => setIsModalVisible(false)}
-              productDatabase={item.product}
-            ></Modal>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
+        {isModalVisible && (
+          <Modal
+            onClose={() => setIsModalVisible(false)}
+            productDatabase={item.product}
+          ></Modal>
+        )}
       </div>
     </div>
   );
