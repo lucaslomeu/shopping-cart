@@ -1,29 +1,37 @@
-import { findByDisplayValue } from '@testing-library/react';
 import React, { useState } from 'react';
 import './InputQuantity.scss';
 
-const InputQuantity = ({ onClick, val }) => {
-  const [value, setValue] = useState(val);
+const InputQuantity = ({ value, onClick, onChange }) => {
+  const [quantity, setQuantity] = useState(1);
 
   const handleChange = () => {
-    setValue(value + 1);
-    console.log('oi');
+    onClick(quantity);
+    console.log(quantity);
   };
 
-  const addel = (e) => {
-    // if (e.innerText == '+') {
-    //   console.log(value);
-    // } else {
-    //   setValue(value - 1);
-    //   console.log(value);
-    // }
+  const handleClick = (e) => {
+    let valueHtml = e.target.innerHTML;
+    if (valueHtml == '-') {
+      setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
   };
 
   return (
-    <div>
-      <button onClick={() => onClick(handleChange())}>-</button>
-      <div>{value}</div>
-      <button onClick={() => onClick(handleChange())}>+</button>
+    <div className="inputQnt">
+      <div className="div" onClick={handleClick}>
+        -
+      </div>
+      <input
+        className="product-quantity"
+        type="number"
+        value={quantity}
+        onChange={handleChange}
+      />
+      <div className="div" onClick={handleClick}>
+        +
+      </div>
     </div>
   );
 };

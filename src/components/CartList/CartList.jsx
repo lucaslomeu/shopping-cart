@@ -1,31 +1,34 @@
 import React, { useState } from 'react';
 import './CartList.scss';
-import SelectSize from '../SelectSize/SelectSize';
-import InputQuantity from '../InputQuantity/InputQuantity';
-import { useGetCartItems, useDeleteCartItem } from '../../services/cartService';
+import {
+  useGetCartItems,
+  useDeleteCartItem,
+  // useUpdateCartItem,
+} from '../../services/cartService';
 import Button from '../Button/Button';
-
-import { IoMdClose } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import CartItem from '../CartItem/CartItem';
 
 const CartList = () => {
   let navigate = useNavigate();
   const cartItems = useGetCartItems();
   const [_, deleteCartItem] = useDeleteCartItem();
-  const [quantity, setQuantity] = useState(1);
+  // const [__, updateCartItem] = useUpdateCartItem();
 
-  const cartItemPrice = (aa) => {
-    let price = cartItems.map((item) => {
-      return quantity * item.price;
-    });
-    console.log(price);
-  };
-
-  const DeletToCart = () => {
-    if (window.confirm('Deseja excluir esse item?') == true) {
-      deleteCartItem(cartItems);
+  const DeleteFromCart = (item) => {
+    if (window.confirm('Deseja excluir esse item?') === true) {
+      deleteCartItem(item.id);
     }
   };
+
+  const calculateSubTotal = () => {
+    console.log('foii');
+  };
+
+  // const UpdateCartItem = (index, item) => {
+  //   updateCartItem(index, item);
+  //   calculateSubTotal();
+  // };
 
   const handleContinueToCart = () => {
     navigate('/');
@@ -56,33 +59,14 @@ const CartList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((item, keyId) => (
-                      <tr key={keyId}>
-                        <td scope="row">
-                          <img
-                            className="cart-image"
-                            src={item.image}
-                            alt={item.name}
-                          />
-                        </td>
-                        <td>{item.name}</td>
-                        <td>
-                          <InputQuantity
-                            val={quantity}
-                            onClick={() => cartItemPrice(quantity)}
-                          />
-                        </td>
-                        <td>
-                          <SelectSize value="m" />
-                        </td>
-                        <td>{item.price * quantity}</td>
-                        <td className="delete-section">
-                          <IoMdClose
-                            className="delete-btn"
-                            onClick={() => DeletToCart()}
-                          />
-                        </td>
-                      </tr>
+                    {cartItems.map((item, key) => (
+                      <CartItem
+                        item={item}
+                        key={key}
+                        cartIndex={key}
+                        deleteItem={() => DeleteFromCart(item)}
+                        onChange={calculateSubTotal}
+                      />
                     ))}
                   </tbody>
                 </table>
@@ -93,7 +77,7 @@ const CartList = () => {
             <div className="subtotal-info">
               <div className="subtotal-title">Total no carrinho</div>
               <div className="subtotal-price">
-                <div className="subtotal-price-text">Subtotal:</div>
+                <div className="subtotal-price-text">Subtotal: Total</div>
               </div>
             </div>
             <div className="subtotal-adress">
@@ -111,11 +95,8 @@ const CartList = () => {
               <div className="subtotal-final-total">
                 <div className="total-text">Total:</div>
                 <div className="total-price">
-                  <div className="price">{cartItemPrice()}</div>
-                  <div className="price-portion">
-                    ou até 3x de
-                    {cartItemPrice() / 3}
-                  </div>
+                  <div className="price"></div>
+                  <div className="price-portion">ou até 3x de</div>
                 </div>
               </div>
               <Button

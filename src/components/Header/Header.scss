@@ -45,7 +45,7 @@
     }
   }
 
-  .hamburger {
+  .mobile-cart {
     @include flexbox;
     font-size: 1.3rem;
     width: 100px;
@@ -56,26 +56,24 @@
 @media (max-width: 780px) {
   .navbar {
     @include flexbox($justify-content: flex-start, $flex-direction: column);
-    top: 0;
-    z-index: 10;
-    position: relative;
 
     .nav {
-      @include flexbox($align-items: center, $justify-content: center);
-      position: fixed;
-      left: -100%;
-      top: 5rem;
-      flex-direction: column;
-      background-color: #fff;
-      width: 100%;
-      border-radius: 10px;
-      text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+      display: none;
 
-      .hamburger {
-        display: block;
-        cursor: pointer;
+      .nav-items {
+        display: none;
+      }
+    }
+
+    .mobile-cart {
+      @include flexbox($justify-content: space-around);
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+
+      .mobile-cart-button {
+        @include flexbox;
+        gap: 2rem;
       }
     }
   }

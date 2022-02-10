@@ -12,8 +12,8 @@ const data = {
       image: Item1,
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
-      size: '',
-      quantity: '',
+      size: 'p',
+      quantity: 1,
     },
     {
       id: '2',
@@ -22,8 +22,8 @@ const data = {
       image: Item2,
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
-      size: '',
-      quantity: '',
+      size: 'p',
+      quantity: 1,
     },
     {
       id: '3',
@@ -32,8 +32,8 @@ const data = {
       image: Item3,
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
-      size: '',
-      quantity: '',
+      size: 'p',
+      quantity: 1,
     },
     {
       id: '4',
@@ -42,8 +42,8 @@ const data = {
       image: Item4,
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
-      size: '',
-      quantity: '',
+      size: 'p',
+      quantity: 1,
     },
     {
       id: '5',
@@ -52,8 +52,8 @@ const data = {
       image: Item1,
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
-      size: '',
-      quantity: '',
+      size: 'p',
+      quantity: 1,
     },
     {
       id: '6',
@@ -62,8 +62,8 @@ const data = {
       image: Item2,
       description:
         'A Camiseta Básica com gola careca é confeccionada em algodão e é extremamente confortável. Feita em duas cores, é ideal para sair de casa confortável e com estilo. Seu estilo moderno proporciona um ar mais leve à roupa.',
-      size: '',
-      quantity: '',
+      size: 'p',
+      quantity: 1,
     },
   ],
 };

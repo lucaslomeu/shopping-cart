@@ -30,7 +30,6 @@ const ProductsList = ({ products }) => {
     setDispositionGrid(!dispositionGrid);
   };
 
-  console.log(dispositionGrid);
   return (
     <div className="product-container">
       <div className="products">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
-import SelectSize from '../SelectSize/SelectSize';
 
 import './Modal.scss';
 import { useAddCartItem } from '../../services/cartService';
@@ -15,13 +14,19 @@ const Modal = ({
 }) => {
   let navigate = useNavigate();
   const [_, addCartItem] = useAddCartItem();
+  const [size, setSize] = useState(productDatabase.size);
+  const [quantity, setQuantity] = useState(productDatabase.quantity);
 
   const handleOutsideClick = (e) => {
     if (e.target.id === id) onClose();
   };
 
+  const handleChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
   const AddToCart = () => {
-    addCartItem(productDatabase);
+    addCartItem({ ...productDatabase, size, quantity });
   };
 
   const BuyProduct = () => {
@@ -59,9 +64,7 @@ const Modal = ({
                   {transformCurrency(productDatabase.price / 3)}
                 </div>
               </div>
-              <div className="cart-info">
-                <SelectSize />
-              </div>
+              <div className="cart-info"></div>
             </div>
 
             <div className="product-AddToCart">

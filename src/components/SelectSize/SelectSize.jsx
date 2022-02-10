@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SelectSize.scss';
 
-const SelectSize = ({ option }) => {
-  const [selectedOption, setSelectedOption] = useState('');
-
+const SelectSize = ({ option, onChange }) => {
   const handleChange = (e) => {
-    let options = e.target.value;
-    setSelectedOption(options);
+    onChange(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
-    <select className="product-size" onChange={handleChange} value={option}>
+    <select
+      className="product-size"
+      defaultValue={option}
+      onChange={handleChange}
+    >
       <option value="tam">TAM</option>
       <option value="p">P</option>
       <option value="m">M</option>

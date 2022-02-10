@@ -40,8 +40,16 @@ const Header = ({ onClick, onChange }) => {
           </Link>
         </div>
       </div>
-      <div className="hamburger">
-        <GiHamburgerMenu />
+      <div className="mobile-cart">
+        <Link to="/" className="nav-title">
+          LomeuShop
+        </Link>
+        <div className="mobile-cart-button">
+          <FiUser />
+          <Link to="/cart">
+            <CartCount cartCount={cartItems} />
+          </Link>
+        </div>
       </div>
     </header>
   );

@@ -164,7 +164,7 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .cart-container {
     .cart {
       @include flexbox($justify-content: center);
