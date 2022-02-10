@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SelectSize from '../SelectSize/SelectSize';
+import './CartItem.scss';
 import { IoMdClose } from 'react-icons/io';
 
-function CartItem({ item, deleteItem, cartIndex, onChange2 }) {
+function CartItem({ item, deleteItem, cartIndex, onChange }) {
   const [size, setSize] = useState(item.size);
   const [quantity, setQuantity] = useState(item.quantity);
-  const [subTotal, setSubTotal] = useState(item.price * item.quantity);
-  const arr = [];
-  let newArr;
+  const [subTotal, setSubTotal] = useState(
+    (item.price * item.quantity).toFixed(2),
+  );
+
   const calculateItem = (item) => item.quantity * item.price;
 
-  const handleChange2 = (item) => {
-    arr.push(...item, item);
-    console.log(arr);
+  const handleChange = (e) => {
+    const value = parseInt(e);
+    setQuantity(value);
+    const subTotalValue = calculateItem({ ...item }).toFixed(2);
+    setSubTotal(subTotalValue);
   };
 
-  const handleChange = (e) => {
-    const value = parseInt(e.target.value);
-    const subTotalValue = calculateItem({ ...item, quantity: value });
-    setSubTotal(subTotalValue);
-    setQuantity(value);
-    handleChange2(e.target.value);
-  };
+  useEffect(() => {
+    onChange({ [item.name]: subTotal });
+  }, []);
 
   return (
-    <tr>
+    <tr onChange={() => onChange({ [item.name]: subTotal, quantity })}>
       <td scope="row">
         <img className="cart-image" src={item.image} alt={item.name} />
       </td>
@@ -35,12 +35,13 @@ function CartItem({ item, deleteItem, cartIndex, onChange2 }) {
           className="product-quantity"
           min="1"
           defaultValue={quantity}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e.target.value)}
         />
       </td>
       <td>
         <SelectSize option={size} onChange={setSize} />
       </td>
+      <td>{item.price.toFixed(2)}</td>
       <td>{subTotal}</td>
       <td className="delete-section">
         <IoMdClose

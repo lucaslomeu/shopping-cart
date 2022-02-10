@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Modal from '../Modal/Modal';
 import './ProductsList.scss';
 import { AiOutlinePlusCircle, AiOutlineBars } from 'react-icons/ai';
-
+import {
+  useGetCartItems,
+  useDeleteCartItem,
+  // useUpdateCartItem,
+} from '../../services/cartService';
 const ProductsList = ({ products }) => {
   const [item, setItem] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);

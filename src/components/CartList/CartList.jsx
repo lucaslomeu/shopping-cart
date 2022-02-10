@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartList.scss';
 import {
   useGetCartItems,
@@ -13,7 +13,8 @@ const CartList = () => {
   let navigate = useNavigate();
   const cartItems = useGetCartItems();
   const [_, deleteCartItem] = useDeleteCartItem();
-  // const [__, updateCartItem] = useUpdateCartItem();
+  const [total, setTotal] = useState(0);
+  const [subTotal, setSubTotal] = useState([]);
 
   const DeleteFromCart = (item) => {
     if (window.confirm('Deseja excluir esse item?') === true) {
@@ -21,24 +22,37 @@ const CartList = () => {
     }
   };
 
-  const calculateSubTotal = () => {
-    console.log('foii');
-  };
-
-  // const UpdateCartItem = (index, item) => {
-  //   updateCartItem(index, item);
-  //   calculateSubTotal();
-  // };
-
   const handleContinueToCart = () => {
     navigate('/');
   };
 
-  const transformCurrency = (currency) => {
-    return currency.toLocaleString('pt-br', {
-      style: 'currency',
-      currency: 'BRL',
-    });
+  // const transformCurrency = (currency) => {
+  //   return currency.toLocaleString('pt-br', {
+  //     style: 'currency',
+  //     currency: 'BRL',
+  //   });
+  // };
+
+  const totalCart = (item) => {
+    return item;
+  };
+
+  useEffect(() => {
+    if (subTotal.length !== 0) {
+      setTotal(
+        subTotal.reduce((acc, item) => acc + item.subTotal),
+        0,
+      );
+    }
+  }, [subTotal]);
+
+  const handleChange2 = (item) => {
+    setSubTotal([...subTotal, item]);
+    console.log('subTotal:', subTotal);
+
+    // subTotal.map((item) => {
+    //   console.log(item);
+    // });
   };
 
   return (
@@ -55,6 +69,7 @@ const CartList = () => {
                       <th>PRODUTO</th>
                       <th>UN</th>
                       <th>TAM</th>
+                      <th>VALOR UNIT</th>
                       <th>SUBTOTAL</th>
                     </tr>
                   </thead>
@@ -62,10 +77,10 @@ const CartList = () => {
                     {cartItems.map((item, key) => (
                       <CartItem
                         item={item}
-                        key={key}
+                        key={item.id}
                         cartIndex={key}
                         deleteItem={() => DeleteFromCart(item)}
-                        onChange={calculateSubTotal}
+                        onChange={(item) => handleChange2(item)}
                       />
                     ))}
                   </tbody>
@@ -77,7 +92,14 @@ const CartList = () => {
             <div className="subtotal-info">
               <div className="subtotal-title">Total no carrinho</div>
               <div className="subtotal-price">
-                <div className="subtotal-price-text">Subtotal: Total</div>
+                <div className="subtotal-price-text">
+                  Subtotal:
+                  {
+                    (subTotal.length !== 0 &&
+                      subTotal.reduce((acc, item) => acc + item.subTotal),
+                    0)
+                  }
+                </div>
               </div>
             </div>
             <div className="subtotal-adress">

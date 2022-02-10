@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
+import SelectSize from '../SelectSize/SelectSize';
 
 import './Modal.scss';
 import { useAddCartItem } from '../../services/cartService';
@@ -21,12 +22,9 @@ const Modal = ({
     if (e.target.id === id) onClose();
   };
 
-  const handleChange = (e) => {
-    setQuantity(e.target.value);
-  };
-
   const AddToCart = () => {
-    addCartItem({ ...productDatabase, size, quantity });
+    addCartItem({ ...productDatabase });
+    navigate({ state: AddToCart });
   };
 
   const BuyProduct = () => {
@@ -63,6 +61,7 @@ const Modal = ({
                   ou até 3x de
                   {transformCurrency(productDatabase.price / 3)}
                 </div>
+                <SelectSize />
               </div>
               <div className="cart-info"></div>
             </div>

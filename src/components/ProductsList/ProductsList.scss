@@ -260,18 +260,8 @@
 
       .product-header {
         @include flexbox($flex-direction: column, $justify-content: center);
-        margin-bottom: 1rem;
-        width: 100%;
-
-        .product-type {
-          font-size: 1rem;
-          text-transform: uppercase;
-          font-weight: 700;
-        }
 
         .header-side {
-          @include flexbox;
-
           .product-filter {
             width: 150px;
             height: 40px;
@@ -288,9 +278,6 @@
 
       .products-list {
         @include flexbox($justify-content: center);
-        flex-wrap: wrap;
-        gap: 3rem;
-        height: 100%;
 
         .product-item {
           @include flexbox($flex-direction: column);
