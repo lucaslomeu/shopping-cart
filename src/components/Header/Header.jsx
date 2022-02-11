@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useGetCartItems } from '../../services/cartService';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
@@ -34,7 +34,7 @@ const Header = ({ onClick, onChange }) => {
             <FiUser />
           </div>
           <Link to="/cart">
-            <CartCount cartCount={cartItems.length} />
+            <CartCount cartCount={cartItems} />
           </Link>
         </div>
       </div>

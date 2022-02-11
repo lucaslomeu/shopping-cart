@@ -20,11 +20,11 @@ const useAddCartItem = () => {
     const result = cartItems.findIndex((i) => {
       return i.id === item.id && i.size === item.size;
     });
-    if (result === -1) {
-      setCartItems([...cartItems, item]);
-    } else {
-      cartItems[result].quantity++;
+    if (result > -1) {
+      cartItems[result].quantity = item.quantity;
       setCartItems(cartItems);
+    } else {
+      setCartItems([...cartItems, item]);
     }
   }
 
@@ -36,10 +36,12 @@ const useAddCartItem = () => {
 const useDeleteCartItem = () => {
   const [cartItems, setCartItems] = useState(retrieveFromLocalStorage() || []);
 
-  function deleteCartItem(cartItemIndex) {
-    const newCartItems = cartItems.splice(cartItemIndex, 1);
+  function deleteCartItem(item) {
+    // const newCartItems = cartItems.splice(index, 1);
+    const newCartItems = cartItems.filter((e, index) => {
+      return item.id !== index;
+    });
     setCartItems(newCartItems);
-    console.log(cartItemIndex);
   }
   persistToLocalStorage(cartItems);
 
