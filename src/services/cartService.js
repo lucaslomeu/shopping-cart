@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const persistToLocalStorage = (cartItems) => {
-  var json = JSON.stringify(cartItems);
+  let json = JSON.stringify(cartItems);
   localStorage.setItem('cartItems', json);
 };
 
@@ -20,6 +20,7 @@ const useAddCartItem = () => {
     const result = cartItems.findIndex((i) => {
       return i.id === item.id && i.size === item.size;
     });
+
     if (result > -1) {
       cartItems[result].quantity = item.quantity;
       setCartItems(cartItems);
@@ -36,12 +37,10 @@ const useAddCartItem = () => {
 const useDeleteCartItem = () => {
   const [cartItems, setCartItems] = useState(retrieveFromLocalStorage() || []);
 
-  function deleteCartItem(item) {
-    // const newCartItems = cartItems.splice(index, 1);
-    const newCartItems = cartItems.filter((e, index) => {
-      return item.id !== index;
-    });
-    setCartItems(newCartItems);
+  function deleteCartItem(index) {
+    const newCartItems = [...cartItems];
+    newCartItems.splice(index, 1);
+    setCartItems([...newCartItems]);
   }
   persistToLocalStorage(cartItems);
 

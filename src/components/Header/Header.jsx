@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetCartItems } from '../../services/cartService';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
-import CartCount from '../CartCount/CartCount';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import InputSearch from '../InputSearch/InputSearch';
 import ShippingFree from '../../components/ShippingFree/ShippingFree';
 import './Header.scss';
@@ -34,7 +34,7 @@ const Header = ({ onClick, onChange }) => {
             <FiUser />
           </div>
           <Link to="/cart">
-            <CartCount cartCount={cartItems} />
+            <AiOutlineShoppingCart className="cartCount" />
           </Link>
         </div>
       </div>
@@ -45,7 +45,7 @@ const Header = ({ onClick, onChange }) => {
         <div className="mobile-cart-button">
           <FiUser />
           <Link to="/cart">
-            <CartCount cartCount={cartItems} />
+            <AiOutlineShoppingCart className="cartCount" />
           </Link>
         </div>
       </div>

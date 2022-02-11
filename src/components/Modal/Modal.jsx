@@ -57,11 +57,9 @@ const Modal = ({
                   ou até 3x de
                   {transformCurrency(productDatabase.price / 3)}
                 </div>
-                <SelectSize />
               </div>
               <div className="cart-info"></div>
             </div>
-
             <div className="product-AddToCart">
               <Button textBtn="Comprar" onClick={() => BuyProduct()} />
               <Button

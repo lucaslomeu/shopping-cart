@@ -3,7 +3,7 @@ import { IoMdClose } from 'react-icons/io';
 import SelectSize from '../SelectSize/SelectSize';
 import './CartItem.scss';
 
-function CartItem({ item, deleteItem, onChange }) {
+function CartItem({ item, deleteItem, onChange, cartItemIndex }) {
   const [size, setSize] = useState(item.size);
   const [quantity, setQuantity] = useState(item.quantity);
   const [subTotal, setSubTotal] = useState(item.price * item.quantity);
@@ -48,7 +48,10 @@ function CartItem({ item, deleteItem, onChange }) {
       <td className="table-item">{transformCurrency(item.price)}</td>
       <td className="table-item">{transformCurrency(subTotal)}</td>
       <td className="delete-section">
-        <IoMdClose className="delete-btn" onClick={deleteItem} />
+        <IoMdClose
+          className="delete-btn"
+          onClick={() => deleteItem(cartItemIndex)}
+        />
       </td>
     </tr>
   );
