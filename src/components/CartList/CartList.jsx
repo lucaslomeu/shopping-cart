@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import './CartList.scss';
-import {
-  useGetCartItems,
-  useDeleteCartItem,
-  // useUpdateCartItem,
-} from '../../services/cartService';
-import Button from '../Button/Button';
+import React, { useState } from 'react';
+import { useGetCartItems, useDeleteCartItem } from '../../services/cartService';
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button/Button';
 import CartItem from '../CartItem/CartItem';
+import './CartList.scss';
 
 const CartList = () => {
   let navigate = useNavigate();
   const cartItems = useGetCartItems();
   const [_, deleteCartItem] = useDeleteCartItem();
-  const [total, setTotal] = useState(0);
   const [subTotal, setSubTotal] = useState([]);
 
   const DeleteFromCart = (item) => {
@@ -26,33 +21,17 @@ const CartList = () => {
     navigate('/');
   };
 
-  // const transformCurrency = (currency) => {
-  //   return currency.toLocaleString('pt-br', {
-  //     style: 'currency',
-  //     currency: 'BRL',
-  //   });
-  // };
-
-  const totalCart = (item) => {
-    return item;
-  };
-
-  useEffect(() => {
-    if (subTotal.length !== 0) {
-      setTotal(
-        subTotal.reduce((acc, item) => acc + item.subTotal),
-        0,
-      );
-    }
-  }, [subTotal]);
-
   const handleChange2 = (item) => {
-    setSubTotal([...subTotal, item]);
-    console.log('subTotal:', subTotal);
-
-    // subTotal.map((item) => {
-    //   console.log(item);
-    // });
+    const result = subTotal.findIndex((i) => {
+      return i.id === item.id;
+    });
+    if (result === -1) {
+      item.quantity = 1;
+      setSubTotal([...subTotal, item]);
+    } else {
+      subTotal[result].quantity++;
+      setSubTotal([...subTotal]);
+    }
   };
 
   return (
@@ -78,9 +57,9 @@ const CartList = () => {
                       <CartItem
                         item={item}
                         key={item.id}
-                        cartIndex={key}
                         deleteItem={() => DeleteFromCart(item)}
                         onChange={(item) => handleChange2(item)}
+                        subTotalValue={subTotal}
                       />
                     ))}
                   </tbody>
@@ -92,14 +71,7 @@ const CartList = () => {
             <div className="subtotal-info">
               <div className="subtotal-title">Total no carrinho</div>
               <div className="subtotal-price">
-                <div className="subtotal-price-text">
-                  Subtotal:
-                  {
-                    (subTotal.length !== 0 &&
-                      subTotal.reduce((acc, item) => acc + item.subTotal),
-                    0)
-                  }
-                </div>
+                <div className="subtotal-price-text">Subtotal: </div>
               </div>
             </div>
             <div className="subtotal-adress">

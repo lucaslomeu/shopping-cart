@@ -1,7 +1,7 @@
-import Item1 from './assets/images/item1.jpg';
-import Item2 from './assets/images/item2.jpg';
-import Item3 from './assets/images/item3.jpg';
-import Item4 from './assets/images/item4.jpg';
+import Item1 from '../assets/images/item1.jpg';
+import Item2 from '../assets/images/item2.jpg';
+import Item3 from '../assets/images/item3.jpg';
+import Item4 from '../assets/images/item4.jpg';
 
 const data = {
   products: [

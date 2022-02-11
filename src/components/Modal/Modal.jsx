@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
+import { useAddCartItem } from '../../services/cartService';
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import SelectSize from '../SelectSize/SelectSize';
-
 import './Modal.scss';
-import { useAddCartItem } from '../../services/cartService';
-
-import { useNavigate } from 'react-router-dom';
 
 const Modal = ({
   id = 'modal',
@@ -15,8 +13,6 @@ const Modal = ({
 }) => {
   let navigate = useNavigate();
   const [_, addCartItem] = useAddCartItem();
-  const [size, setSize] = useState(productDatabase.size);
-  const [quantity, setQuantity] = useState(productDatabase.quantity);
 
   const handleOutsideClick = (e) => {
     if (e.target.id === id) onClose();

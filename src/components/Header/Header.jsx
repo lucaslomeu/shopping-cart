@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
+import { useGetCartItems } from '../../services/cartService';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
-import { GiHamburgerMenu } from 'react-icons/gi';
-
-import './Header.scss';
 import CartCount from '../CartCount/CartCount';
-import { useGetCartItems } from '../../services/cartService';
 import InputSearch from '../InputSearch/InputSearch';
 import ShippingFree from '../../components/ShippingFree/ShippingFree';
+import './Header.scss';
 
 const Header = ({ onClick, onChange }) => {
   const cartItems = useGetCartItems();
@@ -36,7 +34,7 @@ const Header = ({ onClick, onChange }) => {
             <FiUser />
           </div>
           <Link to="/cart">
-            <CartCount cartCount={cartItems} />
+            <CartCount cartCount={cartItems.length} />
           </Link>
         </div>
       </div>

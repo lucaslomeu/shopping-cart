@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { IoMdClose } from 'react-icons/io';
 import SelectSize from '../SelectSize/SelectSize';
 import './CartItem.scss';
-import { IoMdClose } from 'react-icons/io';
 
 function CartItem({ item, deleteItem, cartIndex, onChange }) {
   const [size, setSize] = useState(item.size);
   const [quantity, setQuantity] = useState(item.quantity);
-  const [subTotal, setSubTotal] = useState(
-    (item.price * item.quantity).toFixed(2),
-  );
-
-  const calculateItem = (item) => item.quantity * item.price;
+  const [subTotal, setSubTotal] = useState(item.price * item.quantity);
 
   const handleChange = (e) => {
     const value = parseInt(e);
     setQuantity(value);
-    const subTotalValue = calculateItem({ ...item }).toFixed(2);
+    const subTotalValue = value * item.price;
     setSubTotal(subTotalValue);
   };
 
   useEffect(() => {
-    onChange({ [item.name]: subTotal });
+    onChange({ name: item.name, subTotal, quantity });
   }, []);
 
+  const transformCurrency = (currency) => {
+    return currency.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+  };
+
   return (
-    <tr onChange={() => onChange({ [item.name]: subTotal, quantity })}>
+    <tr onChange={() => onChange({ name: item.name, subTotal, quantity })}>
       <td scope="row">
         <img className="cart-image" src={item.image} alt={item.name} />
       </td>
@@ -41,8 +44,8 @@ function CartItem({ item, deleteItem, cartIndex, onChange }) {
       <td>
         <SelectSize option={size} onChange={setSize} />
       </td>
-      <td>{item.price.toFixed(2)}</td>
-      <td>{subTotal}</td>
+      <td>{transformCurrency(item.price)}</td>
+      <td>{transformCurrency(subTotal)}</td>
       <td className="delete-section">
         <IoMdClose
           className="delete-btn"

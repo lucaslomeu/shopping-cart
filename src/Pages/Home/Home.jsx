@@ -3,7 +3,7 @@ import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import ProductsList from '../../components/ProductsList/ProductsList';
-import data from '../../storage';
+import data from '../../services/storage';
 
 const Home = () => {
   const [products, setProducts] = useState(data.products);
