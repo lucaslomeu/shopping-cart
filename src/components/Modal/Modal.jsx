@@ -1,17 +1,16 @@
 // React
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Components
 import Button from '../Button/Button'
-import SelectSize from '../SelectSize/SelectSize'
 
 // Style
 import './Modal.scss'
 
 // Redux
 import { useDispatch } from 'react-redux'
-import { addToCart, removeFromCart } from '../../store/cartSlice'
+import { addToCart } from '../../store/cartSlice'
 
 const Modal = ({
   id = 'modal',
@@ -30,6 +29,7 @@ const Modal = ({
     dispatch(addToCart(productDatabase))
     // Renderizar alguma notificação que foi adicionado
     // Abrir modal se quer continuar comprando
+    // Adicionar tambem no localStorage
     // navigate({ state: AddToCart })
   }
 

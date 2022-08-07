@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../Button/Button'
 import CartItem from '../CartItem/CartItem'
 import './CartList.scss'
-import { useSelector } from 'react-redux'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromCart } from '../../store/cartSlice'
 
 const CartList = () => {
-  const store = useSelector(state => state.cart)
+  const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
   let navigate = useNavigate()
 
-  const DeleteFromCart = index => {
+  const DeleteFromCart = item => {
     if (window.confirm('Deseja excluir esse item?') === true) {
+      dispatch(removeFromCart(item))
     }
   }
 
@@ -18,7 +23,9 @@ const CartList = () => {
     navigate('/')
   }
 
-  const handleFinalTotal = item => {}
+  const finalTotal = cart.reduce((acc, item) => {
+    return acc + item.price * item.quantity
+  }, 0)
 
   const transformCurrency = currency => {
     return currency.toLocaleString('pt-br', {
@@ -29,7 +36,7 @@ const CartList = () => {
 
   return (
     <div className='cart-container'>
-      {store.length !== 0 ? (
+      {cart.length !== 0 ? (
         <div className='cart'>
           <div className='cart-display'>
             <div className='cart-list'>
@@ -46,12 +53,11 @@ const CartList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {store.map((item, key) => (
+                    {cart.map((item, key) => (
                       <CartItem
                         item={item}
                         key={key}
-                        // deleteItem={item => DeleteFromCart(item)}
-                        // onChange={item => handleFinalTotal(item)}
+                        deleteItem={item => DeleteFromCart(item)}
                         cartItemIndex={key}
                       />
                     ))}
@@ -65,7 +71,7 @@ const CartList = () => {
               <div className='subtotal-title'>Total no carrinho</div>
               <div className='subtotal-price'>
                 <div className='subtotal-price-text'>
-                  {/* Subtotal: {transformCurrency(finalTotal)} */}
+                  Subtotal: {transformCurrency(finalTotal)}
                 </div>
               </div>
             </div>
@@ -83,7 +89,7 @@ const CartList = () => {
             <div className='subtotal-final'>
               <div className='subtotal-final-total'>
                 <div className='total-text'>
-                  {/* Total: {transformCurrency(finalTotal)} */}
+                  Total: {transformCurrency(finalTotal)}
                 </div>
                 <div className='total-price'>
                   <div className='price'></div>
