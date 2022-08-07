@@ -5,7 +5,7 @@ import './CartItem.scss'
 import { useDispatch } from 'react-redux'
 import { updateCard } from '../../store/cartSlice'
 
-function CartItem ({ item, deleteItem, onChange }) {
+function CartItem ({ item, deleteItem }) {
   const dispatch = useDispatch()
 
   const [size, setSize] = useState(item.size)

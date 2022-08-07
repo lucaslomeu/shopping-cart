@@ -4,13 +4,10 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import data from '../../services/storage'
-import { useSelector } from 'react-redux'
 
 const Home = () => {
   const [products, setProducts] = useState(data.products)
-  const store = useSelector(state => state.cart)
 
-  console.log('store', store)
   const handleClick = value => {
     if (value === '' || !value) {
       setProducts(data.products)

@@ -5,8 +5,7 @@ const cardSlice = createSlice({
   initialState: {
     cart: [],
     totalItems: 0,
-    totalPrice: 0,
-    isLoading: false
+    totalPrice: 0
   },
   reducers: {
     addToCart: (state, { payload }) => {
