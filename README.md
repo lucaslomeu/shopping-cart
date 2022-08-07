@@ -17,15 +17,15 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [React](https://pt-br.reactjs.org/)
 - [SASS](https://sass-lang.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [Redux](https://redux.js.org/)
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/lucaslomeu/shopping-cart>
+$ git clone https://github.com/lucaslomeu/shopping-cart
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd shopping-cart
 
 # Instale as dependências
-$ npm install ou
-$ yarn add
+$ npm install ou $ yarn add
 ```
